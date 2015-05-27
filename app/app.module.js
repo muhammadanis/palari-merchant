@@ -1,0 +1,1 @@
+var phinisiApp = angular.module('phinisiApp', ['paymentApp', 'routesApp'])
