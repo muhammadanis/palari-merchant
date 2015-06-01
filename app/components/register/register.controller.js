@@ -1,4 +1,4 @@
-var registerApp = angular.module('loginApp', ['ngAnimate']);
+var registerApp = angular.module('registerApp', ['ngAnimate']);
 
 registerApp.controller('registerController', ['$rootScope', '$scope', '$http', '$location', '$log' , 
 	function($rootScope, $scope, $http, $location, $log){
