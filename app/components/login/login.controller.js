@@ -6,8 +6,14 @@ loginApp.config(function($sceDelegateProvider, $httpProvider) {
     'self',
     // Allow loading from our assets domain.  Notice the difference between * and **.
     'https://api.sandbox.veritrans.co.id/v2/**'
-	]);
+	])
 });
+
+var loginController = function($scope){
+	//test controller
+}
+
+loginApp.controller('loginController', loginController);
 
 
 

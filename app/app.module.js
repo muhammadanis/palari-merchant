@@ -1,4 +1,4 @@
-var phinisiApp = angular.module('phinisiApp', ['routesApp','loginApp']);
+var phinisiApp = angular.module('phinisiApp', ['routesApp']);
 
 
 

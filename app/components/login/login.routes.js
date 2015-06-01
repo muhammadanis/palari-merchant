@@ -3,6 +3,6 @@ routesApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
 		.state('login', {
 			url: '/login',
 			templateUrl: 'app/components/login/login.html',
-			controller: 'loginApp'
+			controller: 'loginController'
 		});
 });

@@ -1,9 +1,9 @@
-var routesApp = angular.module('routesApp', ['ui.router'])
+var routesApp = angular.module('routesApp', ['ui.router','loginApp']);
 
-routesApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  
+routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {  
+
   $urlRouterProvider.otherwise('/login');
 
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 
-})
+}]);
