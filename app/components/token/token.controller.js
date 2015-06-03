@@ -37,6 +37,7 @@ phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 			$scope.tokenModel.sandbox.client_key = "client_key";
 			$scope.tokenModel.production.server_key = "server_key";
 			$scope.tokenModel.production.client_key = "client_key";
+			
 		};
 
 		$scope.getToken();
