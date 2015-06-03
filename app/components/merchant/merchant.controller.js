@@ -1,6 +1,4 @@
-var createMerchantApp = angular.module('createMerchantApp', ['ngAnimate']);
-
-createMerchantApp.controller('createMerchantController', ['$rootScope',
+phinisiApp.controller('merchantController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
