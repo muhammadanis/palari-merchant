@@ -1,0 +1,352 @@
+/* Initialize Color Variable */
+@dark-gray		: #404041;
+@white			: #FFFFFF;
+@light-gray		: #CCCCCC;
+@red              : #b02424;
+
+@font-face {
+  font-family: "Proxima Nova";
+}
+/* Html and Body Style */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Proxima Nova";
+}
+
+/* Default Content Settings */
+header {
+	background: @dark-gray;
+	width: 100%;
+	height: 50px;
+/*  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;*/
+}
+
+.body-wrapper {
+  height: 100%;
+}
+
+.inner-content {
+  padding: 10px 20px; 
+}
+
+.content-wrapper {
+  background: #EFEFEF;
+  border: 1px solid #CCCCCC;
+  padding: 10px 0px;
+}
+
+.content {
+  width: 100%;
+}
+
+/* Default Typography Settings */
+a:hover {
+  text-decoration: none;
+}
+
+.menu-button {
+  background: url(../img/menu_button.png) no-repeat;
+  background-size: 75px 50px;
+  width: 75px;
+  height: 50px;
+  display: inline-block;
+}
+
+.title {
+	overflow: auto;
+	text-align: center;
+	height: 100%;	
+	color: @white;
+	font-size: 24px;
+}
+
+.subtitle {
+	float: left;
+	font-size: 14px;
+	color: @dark-gray;
+}
+
+.subdetails {
+	display: block;
+	font-size: 9px;
+	color: @light-gray;
+	padding-bottom: 5px;
+}
+
+.text-label {
+  display: block;
+  color: @dark-gray;
+  font-size: 9px;
+}
+
+.details-group {
+	margin-bottom: 5px;
+}
+
+/* Horizontal Lines */
+hr {
+	width: 100%;
+	color: @light-gray;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+/* Shipping */
+.shipping-package-wrapper {
+	background: @white;
+	padding: 5px 10px;
+	margin-bottom: -10px
+}
+
+.shipping-logo {
+	display: inline-block;
+	width: 80px;
+	height: 50px;
+}
+
+.jne-logo {
+	background: url(../img/jne_logo.png) no-repeat;
+	background-size: 80px 50px;
+}
+
+.tiki-logo {
+	background: url(../img/tiki_logo.png) no-repeat;
+	background-size: 80px 50px;	
+}
+
+.posindo-logo {
+	background: url(../img/posindo_logo.png) no-repeat;
+	background-size: 80px 50px;
+}
+
+/* Product Info and Product Number */
+.product-info-label {
+	color: @dark-gray;
+	font-size: 12px;
+}
+
+.product-number-label {
+	font-size: 40px;
+}
+.product-number-label.green {
+	color: #009344;
+}
+.product-number-label.orange {
+	color: #F7931D;
+}
+
+/* Button Style */
+.btn-blue {
+  text-transform: uppercase;
+  display: inline-block;
+  width: auto;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 3px 12px;
+  font-size: 10px;
+  line-height: 1.428571429;
+}
+
+/* Form Style */
+/* Label */
+.form-label {
+	display: block;
+	color: @dark-gray;
+	font-size: 14px;	
+}
+/* Text Field */
+.form-control {
+  border-radius: 0px;
+}
+input[type="text"] {
+    position: relative; 
+}
+input.ng-invalid.ng-touched {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+input.ng-invalid.ng-touched:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+
+input.ng-valid.ng-touched {
+  border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+input.ng-valid.ng-touched:focus {
+  border-color: #2b542c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+/* Dropdown Select */
+select {
+   background: white;
+   width: 100%;
+   padding: 5px 10px;
+   font-size: 18px;
+   line-height: 1;
+   border: 1px solid #CCCCCC;
+   border-radius: 0;
+   height: 34px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+   -webkit-appearance: none;
+}
+/* Icon */
+.glyphicon-ok {
+  color: #3c763d;
+  z-index: 999;
+}
+.glyphicon-remove {
+  color: #a94442;
+  z-index: 999;
+}
+
+/* enable absolute positioning */
+.vertical-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon i {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+.left-addon i  { left: 0px;}
+.right-addon i { top: 6px; right: 10px;}
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 9px 12px;
+    pointer-events: none;
+}
+.border-left {
+  border-left: 1px solid #CCCCCC;
+}
+
+/* Error Message */
+.error-message {
+  color: @red;
+}
+
+.error-box {
+  width: 100%;
+  border: 1px solid @red;
+  background-color: #FFD1D1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Sidebar Menu */
+.sidebar {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  width: 80%;
+  background: @dark-gray;
+  z-index: 999;
+}
+
+.sidebar-header {
+  height: 50px;
+  padding: 5px 20px;
+  border-bottom: 1px solid @white;
+}
+
+.logo {
+  background: url(../img/vt_logo.png) no-repeat;
+  background-size: 40px 40px;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+}
+
+.merchant-name {
+  font-size: 18px;
+  color: @white;
+  padding: 20px 20px;
+  display: block;
+}
+
+.menu-list {
+  padding: 10px; 
+}
+
+.menu {
+  display: block;
+  padding: 5px 20px;
+  border-bottom: 1px solid @white;
+  color: @white;
+}
+
+@-webkit-keyframes pushright{
+  from {-webkit-transform:translateX(100%); }
+  to {-webkit-transform:translateX(0); }
+}
+
+@-moz-keyframes pushright{
+  from {-moz-transform:translate(100%, 100%);}
+  to {-moz-transform:translate(-100%, 100%);}    
+}
+.animate-push-right{
+  -webkit-animation-name: pushright;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: pushright;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-in-out;
+  max-width: 100%; 
+  opacity: 1;
+}
+
+.animate-push-right.ng-hide{
+  -webkit-transition: max-width 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  max-width: 0; 
+  opacity: 0;
+}

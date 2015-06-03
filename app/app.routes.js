@@ -4,6 +4,13 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
   $urlRouterProvider.otherwise('/login');
 
+  $stateProvider
+
+    .state('home', {
+    	url: '/',
+    	templateUrl: 'app/components/merchant/home.html'
+    })
+
   // $locationProvider.html5Mode(true);
 
 }]);
