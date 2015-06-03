@@ -8,6 +8,7 @@ phinisiApp.factory('authInterceptor', ['$rootScope', '$q' , '$window', function(
 			return config;
 		},
 		response: function(response){
+			console.log(response);
 			if (response.status === 401) {
         		// handle the case where the user is not authenticated
       		}	
@@ -22,10 +23,10 @@ phinisiApp.config(function($httpProvider, $windowProvider) {
 	if(myWindow.sessionStorage.token){
 		$httpProvider.defaults.transformRequest = function(data){
 			if(data){
-				data.token = myWindow.sessionStorage.token;
 				console.log(data);	
+				data.token = myWindow.sessionStorage.token;				
 			}
-			return data;
+			return angular.toJson(data);
 		}
 	}	
 });

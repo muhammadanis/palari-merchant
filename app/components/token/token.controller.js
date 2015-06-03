@@ -14,12 +14,13 @@ phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 				//url
 				phinisiEndpoint + '/merchant/key/create',
 				//data
-				{sandbox : angular.toJson($scope.tokenModel.sandbox), production : angular.toJson($scope.tokenModel.production)},
+				{sandbox : $scope.tokenModel.sandbox, production : $scope.tokenModel.production},
 				//config
 				{
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 				})
 			.success(function(data,status,headers,config){
+				$log.debug(data);
 				if(data.success){
 					$log.debug("success save token");
 				}else{
