@@ -12,7 +12,9 @@ phinisiApp.controller('loginController', ['$rootScope',
 	'$http',
 	'$location',
 	'$log',
-	function($rootScope, $scope, $http, $location, $log){
+	'$state',
+	'$window',
+	function($rootScope, $scope, $http, $location, $log, $state, $window){
 		$scope.loginModel = {};
 		$scope.$log = $log;
 
@@ -34,6 +36,8 @@ phinisiApp.controller('loginController', ['$rootScope',
 				if(data.success){
 					console.log(data);
 					if(data.success){
+						$window.sessionStorage.token = data.token;
+						$state.transitionTo('token', {arg : 'arg'});
 						console.log('success register ' + data.token);						
 					}else{
 						$scope.error = data.description;						
