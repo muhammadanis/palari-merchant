@@ -12,9 +12,17 @@ phinisiApp.controller('loginController', ['$rootScope',
 	'$http',
 	'$location',
 	'$log',
-	function($rootScope, $scope, $http, $location, $log){
+	'$state',
+	'$window',
+	function($rootScope, $scope, $http, $location, $log, $state, $window){
 		$scope.loginModel = {};
 		$scope.$log = $log;
+
+		$scope.checkSession = function(){
+			if($window.sessionStorage.token){
+				// $state.transitionTo('token', {arg : 'arg'});
+			}
+		}
 
 		$scope.login = function(){
 			//get username and password from model
@@ -34,6 +42,8 @@ phinisiApp.controller('loginController', ['$rootScope',
 				if(data.success){
 					console.log(data);
 					if(data.success){
+						$window.sessionStorage.token = data.token;
+						$state.transitionTo('token', {arg : 'arg'});
 						console.log('success register ' + data.token);						
 					}else{
 						$scope.error = data.description;						
@@ -46,6 +56,8 @@ phinisiApp.controller('loginController', ['$rootScope',
 				$scope.error = data.error;				
 			});
 		};
+
+		$scope.checkSession();
 	}]);
 
 
