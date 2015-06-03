@@ -2,13 +2,18 @@ var routesApp = angular.module('routesApp', ['ui.router']);
 
 routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {  
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/merchant/home');
 
   $stateProvider
 
-    .state('home', {
-    	url: '/',
-    	templateUrl: 'app/components/merchant/home.html'
+  	.state('merchant', {
+  		url:'/merchant',
+  		templateUrl: 'app/components/session/merchant.html'
+  	})
+
+    .state('merchant.home', {
+    	url: '/home',
+    	templateUrl: 'app/components/session/home/home.html'
     })
 
   // $locationProvider.html5Mode(true);

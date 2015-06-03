@@ -53,6 +53,7 @@ a:hover {
   width: 75px;
   height: 50px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .title {
@@ -320,14 +321,25 @@ select {
 }
 
 @-webkit-keyframes pushright{
-  from {-webkit-transform:translateX(100%); }
+  from {-webkit-transform:translateX(-100%); }
   to {-webkit-transform:translateX(0); }
 }
 
 @-moz-keyframes pushright{
-  from {-moz-transform:translate(100%, 100%);}
-  to {-moz-transform:translate(-100%, 100%);}    
+  from {-moz-transform:translateX(-100%);}
+  to {-moz-transform:translateX(0);}    
 }
+
+@-webkit-keyframes pushleft{
+  from {-webkit-transform:translateX(0); }
+  to {-webkit-transform:translateX(-100%); }
+}
+
+@-moz-keyframes pushleft{
+  from {-moz-transform:translateX(0);}
+  to {-moz-transform:translateX(-100%);}    
+}
+
 .animate-push-right{
   -webkit-animation-name: pushright;
   -webkit-animation-duration: 0.5s;
@@ -342,7 +354,16 @@ select {
 }
 
 .animate-push-right.ng-hide{
-  -webkit-transition: max-width 0.1s ease-in;
+/*  -webkit-animation-name: pushleft;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: pushleft;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-in-out;
+*/
+  -webkit-transition: left 0.1s ease-in;
   -moz-transition: all 0.1s ease-in;
   -ms-transition: all 0.1s ease-in;
   -o-transition: all 0.1s ease-in;
