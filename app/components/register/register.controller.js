@@ -19,11 +19,25 @@ registerApp.controller('registerController', ['$rootScope', '$scope', '$http', '
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 				})
 			.success(function(data,status,headers,config){
-				$scope.$log.log(data);				
+				console.log(data);	
+				if(data.success){
+					// success(data,status,headers,config);			
+				}else{
+					// failure(data,status,headers,config);
+				}				
 			})
 			.error(function(data,status,headers,config){
-				$scope.$log.log(data);
+				console.log(data);
 				$scope.error = data.error;
+				// failure(data,status,headers,config);
 			});
-	};
+		};
+
+		$scope.isModelValid = function(){
+			return $scope.regModel.username.length > 0 && $scope.regModel.password.length > 0;
+		}
 }]);
+
+// registerApp.controller('registerController', ['', function(){
+	
+// }]);
