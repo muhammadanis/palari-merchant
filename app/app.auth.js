@@ -25,6 +25,7 @@ phinisiApp.config(function($httpProvider, $windowProvider) {
 				data.token = myWindow.sessionStorage.token;
 				console.log(data);	
 			}
+			return data;
 		}
 	}	
 });

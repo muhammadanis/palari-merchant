@@ -14,7 +14,7 @@ phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 				//url
 				phinisiEndpoint + '/merchant/key/create',
 				//data
-				{sandbox : $scope.tokenModel.sandbox, production : $scope.tokenModel.production},
+				{sandbox : angular.toJson($scope.tokenModel.sandbox), production : angular.toJson($scope.tokenModel.production)},
 				//config
 				{
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
@@ -33,11 +33,11 @@ phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 		};
 
 		$scope.getToken = function(){
-			$scope.tokenModel.sandbox.server_key = "server_key";
-			$scope.tokenModel.sandbox.client_key = "client_key";
-			$scope.tokenModel.production.server_key = "server_key";
-			$scope.tokenModel.production.client_key = "client_key";
-			
+			$scope.tokenModel.sandbox.server_key = "server_key1";
+			$scope.tokenModel.sandbox.client_key = "client_key2";
+			$scope.tokenModel.production.server_key = "server_key3";
+			$scope.tokenModel.production.client_key = "client_key4";
+
 		};
 
 		$scope.getToken();
