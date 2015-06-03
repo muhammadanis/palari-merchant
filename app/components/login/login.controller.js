@@ -1,6 +1,4 @@
-var loginApp = angular.module('loginApp', ['ngAnimate']);
-
-loginApp.config(function($sceDelegateProvider, $httpProvider) {
+phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
@@ -9,7 +7,7 @@ loginApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-loginApp.controller('loginController', ['$rootScope',
+phinisiApp.controller('loginController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
