@@ -1,6 +1,4 @@
-var tokenApp = angular.module('tokenApp', ['ngAnimate']);
-
-tokenApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log'
+phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log'
 	function($rootScope, $scope, $http, $location, $log){
 		$scope.tokenModel = {};
 		$scope.tokenModel.sandbox = {};
