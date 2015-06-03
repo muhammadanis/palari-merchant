@@ -1,6 +1,4 @@
-var loginApp = angular.module('loginApp', ['ngAnimate']);
-
-loginApp.config(function($sceDelegateProvider, $httpProvider) {
+phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
@@ -9,14 +7,22 @@ loginApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-loginApp.controller('loginController', ['$rootScope',
+phinisiApp.controller('loginController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
 	'$log',
-	function($rootScope, $scope, $http, $location, $log){
+	'$state',
+	'$window',
+	function($rootScope, $scope, $http, $location, $log, $state, $window){
 		$scope.loginModel = {};
 		$scope.$log = $log;
+
+		$scope.checkSession = function(){
+			if($window.sessionStorage.token){
+				$state.transitionTo('token', {arg : 'arg'});
+			}
+		}
 
 		$scope.login = function(){
 			//get username and password from model
@@ -36,6 +42,8 @@ loginApp.controller('loginController', ['$rootScope',
 				if(data.success){
 					console.log(data);
 					if(data.success){
+						$window.sessionStorage.token = data.token;
+						$state.transitionTo('token', {arg : 'arg'});
 						console.log('success register ' + data.token);						
 					}else{
 						$scope.error = data.description;						
@@ -48,6 +56,8 @@ loginApp.controller('loginController', ['$rootScope',
 				$scope.error = data.error;				
 			});
 		};
+
+		$scope.checkSession();
 	}]);
 
 

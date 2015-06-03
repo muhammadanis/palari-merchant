@@ -1,6 +1,6 @@
-var registerApp = angular.module('registerApp', ['ngAnimate']);
+// var registerApp = angular.module('registerApp', ['ngAnimate']);
 
-registerApp.controller('registerController', ['$rootScope', '$scope', '$http', '$location', '$log' , 
+phinisiApp.controller('registerController', ['$rootScope', '$scope', '$http', '$location', '$log' , 
 	function($rootScope, $scope, $http, $location, $log){
 		$scope.regModel = {};
 		$scope.$log = $log;
