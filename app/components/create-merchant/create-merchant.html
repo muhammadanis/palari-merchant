@@ -1,0 +1,36 @@
+<!--<div class="alert alert-danger" ng-show="error">
+	{{error}}
+</div>-->
+<form role="form" ng-submit="createMerchant()">
+	<div class="form-group">
+		<label for="merchantName">Merchant Name</label>
+		<input type="text" class="form-control" id="merchantName" name="merchantName" ng-model="merchantModel.merchantName" />
+	</div>
+
+	<div class="form-group">
+		<label for="token">Token</label>
+		<input type="text" class="form-control" id="token" name="token" ng-model="merchantModel.token" />
+	</div>
+
+	<div class="form-group">
+		<label for="merchantLogoUrl">Merchant Logo URL</label>
+		<input type="text" class="form-control" id="merchantLogoUrl" name="merchantLogoUrl" ng-model="merchantModel.merchantLogoUrl" />
+	</div>
+
+	<div class="form-group">
+		<label for="cityId">City ID</label>
+		<input type="number" class="form-control" id="cityId" name="cityId" ng-model="merchantModel.cityId" />
+	</div>
+
+	<div class="form-group">
+		<label for="street">Street</label>
+		<input type="text" class="form-control" id="street" name="street" ng-model="merchantModel.street" />
+	</div>
+
+	<div class="form-group">
+		<label for="phoneNumber">Phone Number</label>
+		<input type="number" class="form-control" id="phoneNumber" name="phoneNumber" ng-model="merchantModel.phoneNumber" />
+	</div>	
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
