@@ -19,17 +19,17 @@ registerApp.controller('registerController', ['$rootScope', '$scope', '$http', '
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 				})
 			.success(function(data,status,headers,config){
-				console.log(data);	
+				console.log(data);			
 				if(data.success){
-					// success(data,status,headers,config);			
+					console.log('success register');					
 				}else{
-					// failure(data,status,headers,config);
-				}				
+					console.log('failed register');
+					$scope.error = data.description;
+				}
 			})
 			.error(function(data,status,headers,config){
 				console.log(data);
-				$scope.error = data.error;
-				// failure(data,status,headers,config);
+				$scope.error = data.error;				
 			});
 		};
 
@@ -37,7 +37,3 @@ registerApp.controller('registerController', ['$rootScope', '$scope', '$http', '
 			return $scope.regModel.username.length > 0 && $scope.regModel.password.length > 0;
 		}
 }]);
-
-// registerApp.controller('registerController', ['', function(){
-	
-// }]);

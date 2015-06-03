@@ -9,11 +9,46 @@ loginApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-var loginController = function($scope){
-	//test controller
-}
+loginApp.controller('loginController', ['$rootScope',
+	'$scope',
+	'$http',
+	'$location',
+	'$log',
+	function($rootScope, $scope, $http, $location, $log){
+		$scope.loginModel = {};
+		$scope.$log = $log;
 
-loginApp.controller('loginController', loginController);
+		$scope.login = function(){
+			//get username and password from model
+			console.log($scope.loginModel.username);
+			console.log($scope.loginModel.password);
+
+			$http.post(
+				//url
+				phinisiEndpoint + '/merchant/account/login', 
+				//data
+				{email : $scope.loginModel.username, password: $scope.loginModel.password},
+				//config
+				{
+					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+				})
+			.success(function(data,status,headers,config){
+				if(data.success){
+					console.log(data);
+					if(data.success){
+						console.log('success register ' + data.token);						
+					}else{
+						$scope.error = data.description;						
+					}
+				}
+				console.log(data);			
+			})
+			.error(function(data,status,headers,config){
+				console.log(data);
+				$scope.error = data.error;				
+			});
+		};
+	}]);
 
 
 

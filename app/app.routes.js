@@ -1,4 +1,4 @@
-var routesApp = angular.module('routesApp', ['ui.router','loginApp', 'registerApp']);
+var routesApp = angular.module('routesApp', ['ui.router','loginApp']);
 
 routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {  
 
