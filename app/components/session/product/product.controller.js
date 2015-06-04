@@ -1,11 +1,11 @@
 phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , function($scope, $http, $log){
 	$scope.productDetails = {
-		product_name: '',
-		product_description: '',
-		product_price: '',
+		product_name: 'product1',
+		product_description: 'description',
+		product_price: '1',
 		product_image: '',
-		product_weight: '',
-		product_insurance: ''
+		product_weight: '1',
+		product_insurance: '1'
 	}	
 
 
