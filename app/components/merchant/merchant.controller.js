@@ -3,6 +3,8 @@ phinisiApp.controller('merchantController', ['$rootScope', '$scope', '$http', '$
 		$scope.merchantModel = {};
 		$scope.merchantModel.details = {};
 		$scope.merchantModel.address = {};
+		$scope.provinceModel = [{id:1, name:'Jawa Barat'}, {id:2, name: 'Banten'}];
+		$scope.cityModel = [{provinceId: 1, cityId: 1, name:'Bandung'}, {provinceId: 1, cityId: 2, name:'Bogor'}, {provinceId: 2, cityId: 3, name:'Tangerang'},];
 		$scope.$log = $log;
 
 		$scope.createMerchant = function(){

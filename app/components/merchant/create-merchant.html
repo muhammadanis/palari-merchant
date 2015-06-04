@@ -25,16 +25,14 @@
 	<div class="form-group">
 		<label for="provinceId">Province</label> <br>
 		<select ng-model="provinceId">
-  			<option value="1">DKI Jakarta</option>
-  			<option value="2">Jawa Barat</option>
+  			<option  ng-repeat="province in provinceModel" value={{province.id}}> {{province.name}} </option>
 		</select>
 	</div>
 
 	<div class="form-group">
 		<label for="cityId">City</label> <br>
 		<select ng-model="merchantModel.address.cityId">
-  			<option value="1">Jakarta</option>
-  			<option value="2">Bandung</option>
+  			<option  ng-repeat="city in cityModel | filter : {provinceId: provinceId}" value={{city.cityId}}> {{city.name}} </option>
 		</select>
 	</div>
 
