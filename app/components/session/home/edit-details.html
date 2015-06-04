@@ -1,48 +1,51 @@
 <div class="content">
-	<form name="editDetailsForm" ng-submit="submit()" ng-controller="editDetailsController" novalidate>
+	<form name="editDetailsForm" ng-submit="submit()" novalidate>
 		
 		<div class="inner-content">
 			
-			<div class="row">
-				<span class="subtitle">Store Details</span>
+			<div class="row no-margin">
+				<span class="subtitle"><strong>Store Details</strong></span>
 			</div>
-			<div class="row">
+			<div class="row no-margin">
 				<span class="subdetails">This details will provide basic information about your store.</span>
 			</div>
 	    	
 			<div class="form-group">
 	          <span class="form-label">Store Name</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="storename" ng-model="storeDetails.store_name" required>
-	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.storename.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.storename.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.storename.$valid"></i>
-	              <span class="error-message" ng-show="editDetailsForm.storename.$error.required">Store Name is required.</span>
+	            <input type="text" class="form-control" name="store_name" ng-model="storeDetails.store_name" required>
+	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.store_name.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.store_name.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.store_name.$valid"></i>
+	              <span class="error-message" ng-show="editDetailsForm.store_name.$error.required">Store Name is required.</span>
 	            </div>
 	          </div>
 	        </div>
 
 			<div class="form-group">
 	          	<span class="form-label">Store Logo</span>
-	          	<div class="right-inner-addon">
-	            	<input type="text" class="form-control" name="storelogo" ng-model="storeDetails.store_logo" required>
-	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.storelogo.$touched">
-	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.storelogo.$valid"></i>
-	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.storelogo.$valid"></i>
-	              		<span class="error-message" ng-show="editDetailsForm.storelogo.$error.required">Store Logo is required.</span>
-	            	</div>
-	         	</div>
+	          	<div class="preview-image-wrapper vertical-align">
+	          		<span class="text-label">PREVIEW LOGO</span>
+	          	</div>
+	          	<div class="row no-margin">
+		          	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
+			          	<span class="subdetails">Maximum file size 2 Megabytes<br/>Allowed extension .JPG, .JPEG, .PNG, .GIF</span>
+		        	</div>
+		        	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+			          	<button class="btn-dark-gray btn-primary pull-right">BROWSE FILE</button>
+		        	</div>
+	        	</div>
 	        </div>
 	        
 	        <div class="form-group">
 	        	<span class="form-label">Phone Number</span>
 	          	<div class="right-inner-addon">
-	            	<input type="text" class="form-control" name="phonenumber" ng-model="storeDetails.phone_number" validation-type="phonenumber" required>
-	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.phonenumber.$touched">
-	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.phonenumber.$valid"></i>
-	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.phonenumber.$valid"></i>
-	              		<span class="error-message" ng-show="editDetailsForm.phonenumber.$error.required">Phone Number is required.</span>
-	              		<span class="error-message" ng-show="editDetailsForm.phonenumber.$error.phonenumber">Please input a valid phone number.</span>
+	            	<input type="text" class="form-control" name="phone_number" ng-model="storeDetails.phone_number" validation-type="phone_number" required>
+	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.phone_number.$touched">
+	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.phone_number.$valid"></i>
+	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.phone_number.$valid"></i>
+	              		<span class="error-message" ng-show="editDetailsForm.phone_number.$error.required">Phone Number is required.</span>
+	              		<span class="error-message" ng-show="editDetailsForm.phone_number.$error.phone_number">Please input a valid phone number.</span>
 	            	</div>
 	        	</div>
 		    </div>
@@ -53,7 +56,7 @@
         <div class="inner-content">
 	        
 	        <div class="row">
-				<span class="subtitle">Store Address</span>
+				<span class="subtitle"><strong>Store Address</strong></span>
 			</div>
 			<div class="row">
 				<span class="subdetails">This address will be used to calculate your shipping rates.</span>

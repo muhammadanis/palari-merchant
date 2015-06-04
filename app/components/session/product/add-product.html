@@ -1,0 +1,123 @@
+<div class="content">
+	<form name="addProductForm" ng-submit="submit()" novalidate>
+		
+		<div class="inner-content">
+			
+			<div class="row no-margin" style="padding-bottom: 20px;">				
+				<span class="subtitle"><strong>Add Product</strong></span>
+				<a ui-sref="merchant.product" class="link-blue pull-right"><i class="fa fa-arrow-left"></i> Cancel</a>
+			</div>
+	    	
+			<div class="form-group">
+	          <span class="form-label">Product Name</span>
+	          <div class="right-inner-addon">
+	            <input type="text" class="form-control" name="product_name" ng-model="productDetails.product_name" required>
+	            <div ng-show="addProductForm.$submitted || addProductForm.productname.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.productname.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.productname.$valid"></i>
+	              <span class="error-message" ng-show="addProductForm.productname.$error.required">Product Name is required.</span>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <span class="form-label">Product Description</span>
+	          <div class="right-inner-addon">
+	            <input type="text" class="form-control" name="product_description" ng-model="productDetails.product_description" required>
+	            <div ng-show="addProductForm.$submitted || addProductForm.product_description.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_description.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_description.$valid"></i>
+	              <span class="error-message" ng-show="addProductForm.product_description.$error.required">Product Description is required.</span>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <span class="form-label">Price</span>
+	          <div class="right-inner-addon">
+	            <input type="text" class="form-control" name="product_price" ng-model="productDetails.product_price" required validation-type="integer">
+	            <div ng-show="addProductForm.$submitted || addProductForm.product_price.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_price.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_price.$valid"></i>
+	              <span class="error-message" ng-show="addProductForm.product_price.$error.required">Price is required.</span>
+	              <span class="error-message" ng-show="addProductForm.product_price.$error.integer">Price must be number.</span>
+	            </div>
+	          </div>
+	        </div>
+
+			<div class="form-group">
+	          	<span class="form-label">Product Image</span>
+	          	<div class="preview-image-wrapper vertical-align">
+	          		<span class="text-label">PREVIEW IMAGE</span>
+	          	</div>
+	          	<div class="row no-margin">
+		          	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
+			          	<span class="subdetails">Maximum file size 2 Megabytes<br/>Allowed extension .JPG, .JPEG, .PNG, .GIF</span>
+		        	</div>
+		        	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+			          	<button class="btn-dark-gray btn-primary pull-right">BROWSE FILE</button>
+		        	</div>
+	        	</div>
+	        </div>
+
+		</div>
+
+        <hr/>
+
+        <div class="inner-content">
+	        
+	        <div class="row no-margin">
+				<span class="subtitle"><strong>Shipping</strong></span>
+			</div>
+			<div class="row no-margin" style="padding: 20px 0px">
+				<input type="checkbox" name="product_shipping" ng-model="enableShipping">
+				<span class="form_label">This product requires shipping</span>
+			</div>
+	    	
+			<div class="form-group auto-overflow">
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+					<span class="form-label">Weight</span>
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
+		            <div class="right-inner-addon">
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="product_weight" maxlength="11" ng-model="productDetails.product_weight" ng-disabled="!enableShipping" validation-type="decimal" required>
+                      	<span class="input-group-addon" id="basic-addon1">gram</span>
+                      </div>
+                      <div ng-show="form.$submitted || addProductForm.product_weight.$touched">
+                        <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_weight.$valid" style="right: 55px"></i>
+                        <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_weight.$valid" style="right: 55px"></i>
+                        <span class="error-message" ng-show="addProductForm.product_weight.$error.required">Weight is required.</span>
+                        <span class="error-message" ng-show="addProductForm.product_weight.$error.decimal">Weight must be integer or decimal.</span>
+                      </div>
+                    </div>
+	          	</div>
+	        </div>
+
+			<div class="form-group auto-overflow">
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+					<span class="form-label">Insurance</span>
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">				
+					<div class="right-inner-addon">
+		          		<select ng-model="productDetails.insurance" ng-disabled="!enableShipping">
+		          			<option>Optional</option>
+		          			<option>Yes</option>
+		          			<option>No</option>
+		          		</select>
+		          		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
+		      		</div>
+		      	</div>
+	        </div>
+	        
+		</div>
+	
+		<div class="row">
+			<p class="text-center">
+				<input type="submit" id="submit" class="btn-blue btn-primary" value="ADD PRODUCT" />
+			</p>
+		</div>
+
+	</form>
+
+</div>
