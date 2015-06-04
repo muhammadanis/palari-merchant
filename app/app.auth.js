@@ -24,7 +24,8 @@ phinisiApp.config(function($httpProvider, $windowProvider) {
 		$httpProvider.defaults.transformRequest = function(data){
 			if(data){
 				console.log(data);	
-				data.token = myWindow.sessionStorage.token;				
+				data.token = myWindow.sessionStorage.token;	
+				console.log(data);			
 			}
 			return angular.toJson(data);
 		}
