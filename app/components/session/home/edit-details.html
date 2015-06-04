@@ -13,7 +13,7 @@
 			<div class="form-group">
 	          <span class="form-label">Store Name</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="store_name" ng-model="storeDetails.store_name" required>
+	            <input type="text" class="form-control" name="store_name" ng-model="storeDetails.merchant_details.merchant_name" required>
 	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.store_name.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.store_name.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.store_name.$valid"></i>
@@ -40,7 +40,7 @@
 	        <div class="form-group">
 	        	<span class="form-label">Phone Number</span>
 	          	<div class="right-inner-addon">
-	            	<input type="text" class="form-control" name="phone_number" ng-model="storeDetails.phone_number" validation-type="phone_number" required>
+	            	<input type="text" class="form-control" name="phone_number" ng-model="storeDetails.merchant_address.phone_number" validation-type="phone_number" required>
 	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.phone_number.$touched">
 	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.phone_number.$valid"></i>
 	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.phone_number.$valid"></i>
@@ -65,7 +65,7 @@
 			<div class="form-group">
 	          <span class="form-label">Address</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="address" ng-model="storeDetails.address" required>
+	            <input type="text" class="form-control" name="address" ng-model="storeDetails.merchant_address.address" required>
 	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.address.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.address.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.address.$valid"></i>
@@ -77,7 +77,7 @@
 			<div class="form-group">
 	          	<span class="form-label">Province</span>
 	          	<div class="right-inner-addon">
-	          		<select ng-model="storeDetails.province">
+	          		<select ng-model="selectedProvince">
   						<option  ng-repeat="province in provinces" value={{province.id}}> {{province.name}} </option>
 					</select>
 	          		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
@@ -87,8 +87,8 @@
 	        <div class="form-group">
 	          	<span class="form-label">City</span>
 	          	<div class="right-inner-addon">
-	          		<select ng-model="storeDetails.city">
-			  			<option  ng-repeat="city in cities | filter : {provinceId: storeDetails.province}" value={{city.cityId}}> {{city.name}} </option>
+	          		<select ng-model="storeDetails.merchant_address.city_id">
+			  			<option  ng-repeat="city in cities | filter : {provinceId: selectedProvince}" value={{city.cityId}}> {{city.name}} </option>
 					</select>
 	          		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
 	      		</div>
