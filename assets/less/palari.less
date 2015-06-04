@@ -3,6 +3,7 @@
 @white			: #FFFFFF;
 @light-gray		: #CCCCCC;
 @red              : #b02424;
+@blue   : #1B75BB;
 
 @font-face {
   font-family: "Proxima Nova";
@@ -42,11 +43,30 @@ header {
   width: 100%;
 }
 
-/* Default Typography Settings */
-a:hover {
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.auto-overflow {
+  overflow: auto;
+}
+
+.no-link:hover {
   text-decoration: none;
 }
 
+.preview-image-wrapper {
+  background: @light-gray;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* Default Typography Settings */
 .menu-button {
   background: url(../img/menu_button.png) no-repeat;
   background-size: 75px 50px;
@@ -66,13 +86,13 @@ a:hover {
 
 .subtitle {
 	float: left;
-	font-size: 14px;
+	font-size: 16px;
 	color: @dark-gray;
 }
 
 .subdetails {
 	display: block;
-	font-size: 9px;
+	font-size: 10px;
 	color: @light-gray;
 	padding-bottom: 5px;
 }
@@ -80,11 +100,15 @@ a:hover {
 .text-label {
   display: block;
   color: @dark-gray;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .details-group {
 	margin-bottom: 5px;
+}
+
+.link-blue {
+  color: @blue;
 }
 
 /* Horizontal Lines */
@@ -140,7 +164,7 @@ hr {
 }
 
 /* Button Style */
-.btn-blue {
+.btn-primary {
   text-transform: uppercase;
   display: inline-block;
   width: auto;
@@ -155,6 +179,15 @@ hr {
   font-size: 10px;
   line-height: 1.428571429;
 }
+.btn-dark-gray {
+  background: @dark-gray;
+}
+.btn-dark-gray:focus,
+.btn-dark-gray:hover {
+  background: @dark-gray;
+  border-color: @dark-gray;
+}
+
 
 /* Form Style */
 /* Label */
@@ -195,10 +228,10 @@ input.ng-valid.ng-touched:focus {
 }
 /* Dropdown Select */
 select {
-   background: white;
+   background: @white;
    width: 100%;
    padding: 5px 10px;
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1;
    border: 1px solid #CCCCCC;
    border-radius: 0;
@@ -207,6 +240,11 @@ select {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
    -webkit-appearance: none;
 }
+
+select:disabled {
+   background: #EEEEEE;
+}
+
 /* Icon */
 .glyphicon-ok {
   color: #3c763d;
@@ -257,8 +295,9 @@ select {
 }
 .right-inner-addon i {
     position: absolute;
-    right: 0px;
-    padding: 9px 12px;
+    right: 0px;    
+    padding: 6px 10px;
+    margin: 3px;
     pointer-events: none;
 }
 .border-left {
@@ -325,7 +364,7 @@ select {
   to {-webkit-transform:translateX(0); }
 }
 
-@-moz-keyframes pushright{
+@-moz-keyframes pushrightX{
   from {-moz-transform:translateX(-100%);}
   to {-moz-transform:translateX(0);}    
 }
@@ -335,39 +374,28 @@ select {
   to {-webkit-transform:translateX(-100%); }
 }
 
-@-moz-keyframes pushleft{
+@-moz-keyframes pushleftX{
   from {-moz-transform:translateX(0);}
   to {-moz-transform:translateX(-100%);}    
 }
 
 .animate-push-right{
-  -webkit-animation-name: pushright;
+ -webkit-animation-name: pushright;
   -webkit-animation-duration: 0.5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-name: pushright;
+  -moz-animation-name: pushrightX;
   -moz-animation-duration: 0.5s;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-in-out;
-  max-width: 100%; 
   opacity: 1;
 }
 
 .animate-push-right.ng-hide{
-/*  -webkit-animation-name: pushleft;
-  -webkit-animation-duration: 0.5s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-name: pushleft;
-  -moz-animation-duration: 0.5s;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: ease-in-out;
-*/
-  -webkit-transition: left 0.1s ease-in;
+  -webkit-transition: max-height 0.1s ease-in;
   -moz-transition: all 0.1s ease-in;
   -ms-transition: all 0.1s ease-in;
   -o-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
-  max-width: 0; 
   opacity: 0;
 }

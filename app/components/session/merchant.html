@@ -1,23 +1,21 @@
-<div ng-controller="merchantController">
-    <header>
-        <i class="menu-button pull-left" ng-click="clickMenu($event)"></i>
-        <span class="title vertical-align">Home</span>
-    </header>
-    <div class="sidebar animate-push-right" ng-show="showMenu">
-        
-        <div class="sidebar-header">
-            <i class="logo pull-left"></i>
-            <span class="title vertical-align">Phinisi</span>
-        </div>
-        <span class="merchant-name">Blitzmegaplex</span>
-        <div class="menu-list">
-            <span class="menu">Home</span>
-            <span class="menu">Product</span>
-            <span class="menu">Order Transaction</span>
-            <span class="menu">Account Settings</span>
-            <span class="menu">Sign Out</span>
-        </div>
-
+<header>
+    <i class="menu-button pull-left" ng-click="clickMenu()"></i>
+    <span class="title vertical-align">Home</span>
+</header>
+<!--     <div class="sidebar animate-push-right" ng-show="showMenu">
+    
+    <div class="sidebar-header">
+        <i class="logo pull-left"></i>
+        <span class="title vertical-align">Phinisi</span>
     </div>
-    <div class="body-wrapper" ui-view ng-click="clickMenu()"></div>
-</div>
+    <span class="merchant-name">Blitzmegaplex</span>
+    <div class="menu-list">
+        <a ui-sref="merchant.home" class="menu">Home</a>
+        <a ui-sref="merchant.editDetails" class="menu">Product</a>
+        <a ui-sref="merchant.home" class="menu">Order Transaction</a>
+        <a ui-sref="merchant.home" class="menu">Account Settings</a>
+        <a ui-sref="merchant.home" class="menu">Sign Out</a>
+    </div>
+
+</div> -->
+<div class="body-wrapper" ui-view ng-click="clickMenu()"></div>
