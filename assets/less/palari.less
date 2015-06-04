@@ -42,6 +42,21 @@ header {
   width: 100%;
 }
 
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.preview-image-wrapper {
+  background: @light-gray;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
 /* Default Typography Settings */
 a:hover {
   text-decoration: none;
@@ -66,13 +81,13 @@ a:hover {
 
 .subtitle {
 	float: left;
-	font-size: 14px;
+	font-size: 16px;
 	color: @dark-gray;
 }
 
 .subdetails {
 	display: block;
-	font-size: 9px;
+	font-size: 10px;
 	color: @light-gray;
 	padding-bottom: 5px;
 }
@@ -80,7 +95,7 @@ a:hover {
 .text-label {
   display: block;
   color: @dark-gray;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .details-group {
@@ -140,7 +155,7 @@ hr {
 }
 
 /* Button Style */
-.btn-blue {
+.btn-primary {
   text-transform: uppercase;
   display: inline-block;
   width: auto;
@@ -155,6 +170,15 @@ hr {
   font-size: 10px;
   line-height: 1.428571429;
 }
+.btn-dark-gray {
+  background: @dark-gray;
+}
+.btn-dark-gray:focus,
+.btn-dark-gray:hover {
+  background: @dark-gray;
+  border-color: @dark-gray;
+}
+
 
 /* Form Style */
 /* Label */
@@ -325,7 +349,7 @@ select {
   to {-webkit-transform:translateX(0); }
 }
 
-@-moz-keyframes pushright{
+@-moz-keyframes pushrightX{
   from {-moz-transform:translateX(-100%);}
   to {-moz-transform:translateX(0);}    
 }
@@ -335,39 +359,28 @@ select {
   to {-webkit-transform:translateX(-100%); }
 }
 
-@-moz-keyframes pushleft{
+@-moz-keyframes pushleftX{
   from {-moz-transform:translateX(0);}
   to {-moz-transform:translateX(-100%);}    
 }
 
 .animate-push-right{
-  -webkit-animation-name: pushright;
+ -webkit-animation-name: pushright;
   -webkit-animation-duration: 0.5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-name: pushright;
+  -moz-animation-name: pushrightX;
   -moz-animation-duration: 0.5s;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-in-out;
-  max-width: 100%; 
   opacity: 1;
 }
 
 .animate-push-right.ng-hide{
-/*  -webkit-animation-name: pushleft;
-  -webkit-animation-duration: 0.5s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-name: pushleft;
-  -moz-animation-duration: 0.5s;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: ease-in-out;
-*/
-  -webkit-transition: left 0.1s ease-in;
+  -webkit-transition: max-height 0.1s ease-in;
   -moz-transition: all 0.1s ease-in;
   -ms-transition: all 0.1s ease-in;
   -o-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
-  max-width: 0; 
   opacity: 0;
 }

@@ -16,6 +16,11 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
     	templateUrl: 'app/components/session/home/home.html'
     })
 
+    .state('merchant.editDetails', {
+      url: '/edit-details',
+      templateUrl: 'app/components/session/home/edit-details.html'
+    })
+
   // $locationProvider.html5Mode(true);
 
 }]);

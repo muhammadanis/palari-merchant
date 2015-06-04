@@ -12,4 +12,8 @@ phinisiApp.controller('detailsController', function($scope, $http){
 
 	$scope.city = [ 'tes' ]
 
+	$scope.submit = function () {
+		
+	}
+
 })
