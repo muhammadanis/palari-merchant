@@ -23,7 +23,7 @@ phinisiApp.config(function($httpProvider, $windowProvider) {
 	if(myWindow.sessionStorage.token){
 		$httpProvider.defaults.transformRequest = function(data){
 			if(data){
-				console.log(data);	
+				console.log('request data: ' + data);	
 				data.token = myWindow.sessionStorage.token;	
 				console.log(data);			
 			}
