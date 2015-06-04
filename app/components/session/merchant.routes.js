@@ -10,8 +10,7 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.home', {
     	url: '/home',
-    	templateUrl: 'app/components/session/home/home.html',
-      controller: 'homeController'
+    	templateUrl: 'app/components/session/home/home.html'
     })
 
     .state('merchant.editDetails', {
@@ -29,6 +28,11 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       url: '/add-product',
       templateUrl: 'app/components/session/product/add-product.html',
       controller: 'addProductController'
+    })
+
+    .state('merchant.productDetails', {
+      url: '/product-details',
+      templateUrl: 'app/components/session/product/product-details.html'
     })
 
 

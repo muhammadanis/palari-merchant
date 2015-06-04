@@ -4,9 +4,12 @@
 @light-gray		: #CCCCCC;
 @red              : #b02424;
 @blue   : #1B75BB;
+@orange : #F7931D;
+@black: #000000;
 
 @font-face {
   font-family: "Proxima Nova";
+  src: url('../fonts/proximanova-regular-webfont.ttf');
 }
 /* Html and Body Style */
 html, body {
@@ -67,6 +70,9 @@ header {
 }
 
 /* Default Typography Settings */
+.tab {
+  padding: 0px 10px;
+}
 .menu-button {
   background: url(../img/menu_button.png) no-repeat;
   background-size: 75px 50px;
@@ -85,7 +91,6 @@ header {
 }
 
 .subtitle {
-	float: left;
 	font-size: 16px;
 	color: @dark-gray;
 }
@@ -115,8 +120,6 @@ header {
 hr {
 	width: 100%;
 	color: @light-gray;
-	margin-top: 0px;
-	margin-bottom: 0px;
 }
 
 /* Shipping */
@@ -167,7 +170,7 @@ hr {
 .btn-primary {
   text-transform: uppercase;
   display: inline-block;
-  width: auto;
+  width: 100%;
   margin-bottom: 0;
   font-weight: normal;
   text-align: center;
@@ -186,6 +189,24 @@ hr {
 .btn-dark-gray:hover {
   background: @dark-gray;
   border-color: @dark-gray;
+}
+
+.btn-light-gray {
+  background: @light-gray;
+}
+.btn-light-gray:focus,
+.btn-light-gray:hover {
+  background: @light-gray;
+  border-color: @light-gray;
+}
+
+.btn-orange {
+  background: @orange;
+}
+.btn-orange:focus,
+.btn-orange:hover {
+  background: @orange;
+  border-color: @orange;
 }
 
 
@@ -398,4 +419,68 @@ select:disabled {
   -o-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
   opacity: 0;
+}
+
+/* Product Pages Style */
+.product-wrapper {
+  width: 100%;
+  height: auto;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+
+.product-wrapper:focus {
+  background: @light-gray;
+}
+
+.product-name {
+  font-size: 18px;
+  color: @dark-gray;
+}
+
+.product-price {
+  font-size: 18px;
+  color: @orange;
+}
+
+.product-image {
+  max-width: 100%;
+}
+
+.product-details-wrapper {
+  width: 100%;
+  height: auto;
+  border: 1px solid @light-gray;
+  background: @white;
+  padding: 0px 10px;
+  color: @dark-gray;
+}
+
+.product-details-table {
+  width: 100%;
+}
+
+.product-details-row {
+  border-bottom: 1px solid @light-gray;
+}
+
+.dialog-box {
+  background: @black;
+  opacity: 0.9;
+  color: @white;
+  height: auto;
+  padding: 20px;
+}
+
+.absolute-center {
+  width: 80%;
+  height: 30%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.center-container {
+  position: relative;
 }
