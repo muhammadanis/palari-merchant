@@ -43,7 +43,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 					console.log(data);
 					if(data.success){
 						$window.sessionStorage.token = data.token;
-						$state.transitionTo('token', {arg : 'arg'});
+						$state.transitionTo('create-merchant', {arg : 'arg'});
 						console.log('success register ' + data.token);						
 					}else{
 						$scope.error = data.description;						
