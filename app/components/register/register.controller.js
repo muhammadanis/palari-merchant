@@ -1,7 +1,7 @@
 // var registerApp = angular.module('registerApp', ['ngAnimate']);
 
-phinisiApp.controller('registerController', ['$rootScope', '$scope', '$http', '$location', '$log' , 
-	function($rootScope, $scope, $http, $location, $log){
+phinisiApp.controller('registerController', ['$rootScope', '$scope', '$http', '$location', '$log', '$state', 
+	function($rootScope, $scope, $http, $location, $log, $state){
 		$scope.regModel = {};
 		$scope.$log = $log;
 		$scope.register = function(){
@@ -21,7 +21,8 @@ phinisiApp.controller('registerController', ['$rootScope', '$scope', '$http', '$
 			.success(function(data,status,headers,config){
 				console.log(data);			
 				if(data.success){
-					console.log('success register');					
+					console.log('success register');
+					$state.transitionTo('login', {arg : 'arg'});					
 				}else{
 					console.log('failed register');
 					$scope.error = data.description;
