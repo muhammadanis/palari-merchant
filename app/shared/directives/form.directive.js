@@ -43,7 +43,7 @@ phinisiApp.directive('validationType', function() {
             return true;
           }
 
-          if (integerRegex.test(viewValue)) {
+          if (decimalRegex.test(viewValue)) {
             // it is valid
             return true; 
           }

@@ -1,5 +1,5 @@
 <div class="content">
-	<form name="addProductForm" ng-submit="submit()" ng-controller="addProductController" novalidate>
+	<form name="addProductForm" ng-submit="submit()" novalidate>
 		
 		<div class="inner-content">
 			
@@ -85,10 +85,10 @@
                       	<span class="input-group-addon" id="basic-addon1">gram</span>
                       </div>
                       <div ng-show="form.$submitted || addProductForm.product_weight.$touched">
-                        <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_weight.$valid"></i>
-                        <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_weight.$valid"></i>
+                        <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_weight.$valid" style="right: 55px"></i>
+                        <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_weight.$valid" style="right: 55px"></i>
                         <span class="error-message" ng-show="addProductForm.product_weight.$error.required">Weight is required.</span>
-                        <span class="error-message" ng-show="addProductForm.product_weight.$error.decimal">Weight must be number.</span>
+                        <span class="error-message" ng-show="addProductForm.product_weight.$error.decimal">Weight must be integer or decimal.</span>
                       </div>
                     </div>
 	          	</div>

@@ -4,17 +4,20 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
   	.state('merchant', {
   		url:'/merchant',
-  		templateUrl: 'app/components/session/merchant.html'
+  		templateUrl: 'app/components/session/merchant.html',
+      controller: 'merchantController'
   	})
 
     .state('merchant.home', {
     	url: '/home',
-    	templateUrl: 'app/components/session/home/home.html'
+    	templateUrl: 'app/components/session/home/home.html',
+      controller: 'homeController'
     })
 
     .state('merchant.editDetails', {
       url: '/edit-details',
-      templateUrl: 'app/components/session/home/edit-details.html'
+      templateUrl: 'app/components/session/home/edit-details.html',
+      controller: 'detailsController'
     })
 
     .state('merchant.product', {
@@ -24,7 +27,8 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.addProduct', {
       url: '/add-product',
-      templateUrl: 'app/components/session/product/add-product.html'
+      templateUrl: 'app/components/session/product/add-product.html',
+      controller: 'addProductController'
     })
 
 
