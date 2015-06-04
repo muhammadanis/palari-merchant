@@ -3,6 +3,7 @@
 @white			: #FFFFFF;
 @light-gray		: #CCCCCC;
 @red              : #b02424;
+@blue   : #1B75BB;
 
 @font-face {
   font-family: "Proxima Nova";
@@ -50,6 +51,14 @@ header {
   padding: 0 !important;
 }
 
+.auto-overflow {
+  overflow: auto;
+}
+
+.no-link:hover {
+  text-decoration: none;
+}
+
 .preview-image-wrapper {
   background: @light-gray;
   width: 100%;
@@ -58,10 +67,6 @@ header {
 }
 
 /* Default Typography Settings */
-a:hover {
-  text-decoration: none;
-}
-
 .menu-button {
   background: url(../img/menu_button.png) no-repeat;
   background-size: 75px 50px;
@@ -100,6 +105,10 @@ a:hover {
 
 .details-group {
 	margin-bottom: 5px;
+}
+
+.link-blue {
+  color: @blue;
 }
 
 /* Horizontal Lines */
@@ -219,10 +228,10 @@ input.ng-valid.ng-touched:focus {
 }
 /* Dropdown Select */
 select {
-   background: white;
+   background: @white;
    width: 100%;
    padding: 5px 10px;
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1;
    border: 1px solid #CCCCCC;
    border-radius: 0;
@@ -231,6 +240,11 @@ select {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
    -webkit-appearance: none;
 }
+
+select:disabled {
+   background: #EEEEEE;
+}
+
 /* Icon */
 .glyphicon-ok {
   color: #3c763d;
@@ -281,8 +295,9 @@ select {
 }
 .right-inner-addon i {
     position: absolute;
-    right: 0px;
-    padding: 9px 12px;
+    right: 0px;    
+    padding: 6px 10px;
+    margin: 3px;
     pointer-events: none;
 }
 .border-left {

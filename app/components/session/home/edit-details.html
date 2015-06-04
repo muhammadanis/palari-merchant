@@ -13,11 +13,11 @@
 			<div class="form-group">
 	          <span class="form-label">Store Name</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="storename" ng-model="storeDetails.store_name" required>
-	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.storename.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.storename.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.storename.$valid"></i>
-	              <span class="error-message" ng-show="editDetailsForm.storename.$error.required">Store Name is required.</span>
+	            <input type="text" class="form-control" name="store_name" ng-model="storeDetails.store_name" required>
+	            <div ng-show="editDetailsForm.$submitted || editDetailsForm.store_name.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.store_name.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.store_name.$valid"></i>
+	              <span class="error-message" ng-show="editDetailsForm.store_name.$error.required">Store Name is required.</span>
 	            </div>
 	          </div>
 	        </div>
@@ -40,12 +40,12 @@
 	        <div class="form-group">
 	        	<span class="form-label">Phone Number</span>
 	          	<div class="right-inner-addon">
-	            	<input type="text" class="form-control" name="phonenumber" ng-model="storeDetails.phone_number" validation-type="phonenumber" required>
-	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.phonenumber.$touched">
-	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.phonenumber.$valid"></i>
-	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.phonenumber.$valid"></i>
-	              		<span class="error-message" ng-show="editDetailsForm.phonenumber.$error.required">Phone Number is required.</span>
-	              		<span class="error-message" ng-show="editDetailsForm.phonenumber.$error.phonenumber">Please input a valid phone number.</span>
+	            	<input type="text" class="form-control" name="phone_number" ng-model="storeDetails.phone_number" validation-type="phone_number" required>
+	            	<div ng-show="editDetailsForm.$submitted || editDetailsForm.phone_number.$touched">
+	              		<i class="glyphicon glyphicon-ok" ng-show="editDetailsForm.phone_number.$valid"></i>
+	              		<i class="glyphicon glyphicon-remove" ng-show="!editDetailsForm.phone_number.$valid"></i>
+	              		<span class="error-message" ng-show="editDetailsForm.phone_number.$error.required">Phone Number is required.</span>
+	              		<span class="error-message" ng-show="editDetailsForm.phone_number.$error.phone_number">Please input a valid phone number.</span>
 	            	</div>
 	        	</div>
 		    </div>

@@ -2,7 +2,7 @@ var routesApp = angular.module('routesApp', ['ui.router']);
 
 routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {  
 
-  $urlRouterProvider.otherwise('/merchant/home');
+  $urlRouterProvider.otherwise('/merchant/product');
 
   $stateProvider
 
@@ -20,6 +20,17 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       url: '/edit-details',
       templateUrl: 'app/components/session/home/edit-details.html'
     })
+
+    .state('merchant.product', {
+      url: '/product',
+      templateUrl: 'app/components/session/product/product.html'
+    })
+
+    .state('merchant.addProduct', {
+      url: '/add-product',
+      templateUrl: 'app/components/session/product/add-product.html'
+    })
+
 
   // $locationProvider.html5Mode(true);
 
