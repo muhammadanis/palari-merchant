@@ -21,7 +21,8 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.product', {
       url: '/product',
-      templateUrl: 'app/components/session/product/product.html'
+      templateUrl: 'app/components/session/product/product.html',
+      controller: 'addProductController'
     })
 
     .state('merchant.addProduct', {
@@ -45,7 +46,6 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       templateUrl: 'app/components/session/settings/change-password.html',
       controller: 'changePasswordController'
     })
-
 
   // $locationProvider.html5Mode(true);
 
