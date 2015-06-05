@@ -21,18 +21,13 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.product', {
       url: '/product',
-      templateUrl: 'app/components/session/product/product.html'
+      templateUrl: 'app/components/session/product/product.html',
+      controller: 'addProductController'
     })
 
     .state('merchant.addProduct', {
       url: '/add-product',
       templateUrl: 'app/components/session/product/add-product.html',
-      controller: 'addProductController'
-    })
-
-    .state('merchant.productList', {
-      url: '/product-list',
-      templateUrl: 'app/components/session/product/product-list.html',
       controller: 'addProductController'
     })
 
