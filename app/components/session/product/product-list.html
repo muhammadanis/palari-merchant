@@ -1,8 +1,8 @@
 <div class="content">
 	<div class="inner-content">
-		<input ng-model="searchProduct">
+		Search : <input ng-model="searchProduct">
 	</div>
-	<div class="inner-content" ng-repeat="product in merchantProduct.merchant_product | filter : searchProduct">
+	<div class="inner-content" ng-repeat="product in merchantProduct.merchant_product | filter : {name : searchProduct}">
 		<div class="row text-center content-wrapper">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<img src={{product.image_url[0]}} height="100" width="200" alt={{product.name}}></img>
