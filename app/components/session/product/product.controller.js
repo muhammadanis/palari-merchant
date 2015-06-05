@@ -1,4 +1,4 @@
-phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , function($scope, $http, $log){
+phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , function($scope, $http, $log, $window){
 	$scope.productDetails = {
 		product_name: 'product1',
 		product_description: 'description',
@@ -7,32 +7,34 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , fun
 		product_weight: '1',
 		product_insurance: '1'
 	}	
-
-
-
-
 	$scope.enableShipping = false;
-	$scope.product_list = [1,2,3];
+	$scope.merchantProduct = {
+		merchant_id : '',
+		merchant_product: {}
+	};
+
 	$scope.getProductList = function(){
+		$log.debug($window.sessionStorage.token);
 		$http.post(
 			//url
 			phinisiEndpoint + '/merchant/product',
 			//data
-			{},
+			{
+			},
 			//config
 			{
 				headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 			})
 		.success(function(data,status,headers,config){
-			if(data.success){
-				if(data.success){
-					$scope.product_list = data;
-					$log.debug('Get product list success!');					
-				}else{
-					$scope.error = data.description;						
-				}
+			if(data.hasOwnProperty('merchant_id')){
+				$scope.merchantProduct.merchant_id = data.merchant_id;
+				$scope.merchantProduct.merchant_product = data.merchant_product; 
+				$log.debug('Get product list success!');
+				$log.debug($scope.merchantProduct);
+			}	
+			else{
+				$scope.error = data.description;
 			}
-			$log.debug(data);			
 		})
 		.error(function(data,status,headers,config){
 			$log.debug(data);
