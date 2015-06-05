@@ -2,11 +2,8 @@
 	<form name="addProductForm" ng-submit="submitProduct()" novalidate>
 		
 		<div class="inner-content">
-			
-			<div class="row no-margin" style="padding-bottom: 20px;">				
-				<span class="subtitle"><strong>Add Product</strong></span>
-				<a ui-sref="merchant.product" class="link-blue pull-right"><i class="fa fa-arrow-left"></i> Cancel</a>
-			</div>
+			<a ui-sref="merchant.product" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Cancel</a>			
+			<span class="subtitle"><strong>Add Product</strong></span>
 	    	
 			<div class="form-group">
 	          <span class="form-label">Product Name</span>
@@ -66,14 +63,11 @@
 
         <div class="inner-content">
 	        
-	        <div class="row no-margin">
-				<span class="subtitle"><strong>Shipping</strong></span>
-			</div>
-			<div class="row no-margin" style="padding: 20px 0px">
+			<span class="subtitle"><strong>Shipping</strong></span>
+			<div class="center-block" style="margin-bottom: 10px">
 				<input type="checkbox" name="product_shipping" ng-model="enableShipping">
 				<span class="form_label">This product requires shipping</span>
 			</div>
-	    	
 			<div class="form-group auto-overflow">
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
 					<span class="form-label">Weight</span>
@@ -112,10 +106,8 @@
 	        
 		</div>
 	
-		<div class="row">
-			<p class="text-center">
-				<input type="submit" id="submit" class="btn-blue btn-primary" value="ADD PRODUCT" />
-			</p>
+		<div class="center-block text-center">
+			<input type="submit" id="submit" class="btn-blue btn-primary" value="ADD PRODUCT" />
 		</div>
 
 	</form>
