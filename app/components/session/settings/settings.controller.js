@@ -1,5 +1,5 @@
-phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log',
-	function($rootScope, $scope, $http, $location, $log){
+phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log', '$window',
+	function($rootScope, $scope, $http, $location, $log, $window){
 		$scope.tokenModel = {};
 		$scope.tokenModel.sandbox = {};
 		$scope.tokenModel.production = {};		
@@ -39,6 +39,22 @@ phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 			$scope.tokenModel.production.server_key = "server_key3";
 			$scope.tokenModel.production.client_key = "client_key4";
 
+			$http.get(
+				//url
+				phinisiEndpoint + '/merchant/key/' + $window.sessionStorage.token,
+				{},
+				//config
+				{
+					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+				}
+
+			)
+			.success(function(data){
+				$log.debug('get token data: ' + data);
+			})
+			.error(function(data){
+				$scope.error = data.description;				
+			});
 			
 
 		};
