@@ -20,7 +20,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 
 		$scope.checkSession = function(){
 			if($window.sessionStorage.token){
-				$state.transitionTo('merchant.home', {arg : 'arg'});
+				// $state.transitionTo('merchant.home', {arg : 'arg'});
 			}
 		}
 
