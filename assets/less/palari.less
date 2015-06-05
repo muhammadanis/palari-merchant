@@ -13,7 +13,7 @@
 }
 /* Html and Body Style */
 html, body {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   font-family: "Proxima Nova";
 }
@@ -32,6 +32,11 @@ header {
   height: 100%;
 }
 
+.login-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
 .inner-content {
   padding: 10px 20px; 
 }
@@ -42,8 +47,19 @@ header {
   padding: 10px 0px;
 }
 
+.login-content {
+  background: @dark-gray;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  color: @white;
+}
+
 .content {
   width: 100%;
+  min-height: 100%;
   padding-bottom: 20px;
 }
 
@@ -86,7 +102,6 @@ header {
 .title {
 	overflow: auto;
 	height: 100%;	
-	color: @white;
 	font-size: 2em;
 }
 
@@ -118,6 +133,11 @@ header {
   display: block;
   font-size: 1.2em;
   color: @blue;
+}
+
+.link-orange {
+  font-size: 1.2em;
+  color: @orange;
 }
 
 /* Horizontal Lines */
@@ -224,6 +244,12 @@ hr {
 /* Text Field */
 .form-control {
   border-radius: 0px;
+}
+.form-login {
+  color: @white;
+  border-style: none;
+  border-bottom: 1px solid @white;
+  background: none;
 }
 input[type="text"] {
     position: relative; 
@@ -359,10 +385,26 @@ select:disabled {
 }
 
 .logo {
-  background: url(../img/vt_logo.png) no-repeat;
+  background: url(../img/vt_logo_white.png) no-repeat;
   background-size: 40px 40px;
   height: 40px;
   width: 40px;
+  display: inline-block;
+}
+
+.logo-gray {
+  background: url(../img/vt_logo_gray.png) no-repeat;
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.logo-white {
+  background: url(../img/vt_logo_white.png) no-repeat;
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
   display: inline-block;
 }
 
@@ -476,11 +518,11 @@ select:disabled {
   color: @white;
   height: auto;
   padding: 20px 10px;
+  width: 80%;
+  height: 30%;
 }
 
 .absolute-center {
-  width: 80%;
-  height: 30%;
   overflow: auto;
   margin: auto;
   position: absolute;

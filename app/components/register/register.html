@@ -1,14 +1,28 @@
 <div class="alert alert-danger" ng-show="error">
 	{{error}}
 </div>
-<form role="form" ng-submit="register()" >
-	<div class="form-group">
-		<label for="username">Username:</label>
-		<input type="text" class="form-control" id="username" name="username" ng-model="regModel.username">
+<div class="login-wrapper absolute-center">
+	<div class="center-block text-center">
+		<i class="logo-gray"></i>
 	</div>
-	<div class="form-group">
-		<label for="password">Password:</label>
-		<input type="password" class="form-control" id="password" name="password" ng-model="regModel.password">
+	<div class="center-block text-center">
+		<span class="title text-center">Register New Account</span>
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+	<form role="form" ng-submit="register()">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" class="form-control" id="username" name="username" ng-model="regModel.username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password" name="password" ng-model="regModel.password">
+		</div>
+
+		<span class="text-label">By clicking sign up button, you agree to our user's privacy <a ui-sref="register" class="link-orange">terms and agreements.</a></span>
+		
+		<button type="submit" class="btn-primary" style="width: 100%; margin:10px 0px;">SIGN UP</button>
+
+		<span class="text-label">Already have an account? <a ui-sref="login" class="link-orange">Sign In</a></span>
+	</form>
+
+</div>
