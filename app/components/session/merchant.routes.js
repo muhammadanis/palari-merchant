@@ -37,7 +37,8 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.settings', {
       url: '/settings',
-      templateUrl: 'app/components/session/settings/settings.html'
+      templateUrl: 'app/components/session/settings/settings.html',
+      controller: 'tokenController'
     })
 
     .state('merchant.changePassword', {
