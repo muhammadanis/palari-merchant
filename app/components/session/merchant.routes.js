@@ -22,13 +22,13 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
     .state('merchant.product', {
       url: '/product',
       templateUrl: 'app/components/session/product/product.html',
-      controller: 'productController'
+      controller: 'addProductController'
     })
 
     .state('merchant.addProduct', {
       url: '/add-product',
       templateUrl: 'app/components/session/product/add-product.html',
-      controller: 'productController'
+      controller: 'addProductController'
     })
 
     .state('merchant.productDetails', {
@@ -38,7 +38,8 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.settings', {
       url: '/settings',
-      templateUrl: 'app/components/session/settings/settings.html'
+      templateUrl: 'app/components/session/settings/settings.html',
+      controller: 'tokenController'
     })
 
     .state('merchant.changePassword', {

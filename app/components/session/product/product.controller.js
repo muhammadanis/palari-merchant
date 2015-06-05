@@ -1,4 +1,4 @@
-phinisiApp.controller('productController', ['$scope' , '$http' , '$log' , '$window' , function($scope, $http, $log, $window){
+phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , function($scope, $http, $log, $window){
 	$scope.productDetails = {
 		product_name: 'product1',
 		product_description: 'description',

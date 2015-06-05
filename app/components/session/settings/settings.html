@@ -15,26 +15,26 @@
 		</div>
 	</div>
 	<hr class="no-margin" />
-	<form name="accessKeyForm" novalidate>
+	<form name="accessKeyForm" ng-submit="saveToken()" novalidate>
 		<div class="inner-content">
 			<span class="subtitle"><strong>Access Keys</strong></span>
 			<span class="subtitle-key text-right">Sandbox Environment</span>
 			<div class="form-group">
 				<span class="form-label">Server Key</span>
-				<input type="text" class="form-control" ng-model=""/>
+				<input type="text" class="form-control" ng-model="tokenModel.sandbox.server_key"/>
 			</div>
 			<div class="form-group">
 				<span class="form-label">Client Key</span>
-				<input type="text" class="form-control" ng-model=""/>
+				<input type="text" class="form-control" ng-model="tokenModel.sandbox.client_key"/>
 			</div>
 			<span class="subtitle-key text-right">Production Environment</span>
 			<div class="form-group">
 				<span class="form-label">Server Key</span>
-				<input type="text" class="form-control" ng-model=""/>
+				<input type="text" class="form-control" ng-model="tokenModel.production.server_key"/>
 			</div>
 			<div class="form-group">
 				<span class="form-label">Client Key</span>
-				<input type="text" class="form-control" ng-model=""/>
+				<input type="text" class="form-control" ng-model="tokenModel.production.client_key"/>
 			</div>
 			<div class="center-block text-center">
 				<input type="submit" class="btn-primary" value="SAVE CHANGES"/>
