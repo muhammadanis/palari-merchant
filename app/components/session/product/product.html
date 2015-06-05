@@ -13,46 +13,30 @@
 
 <!-- Details Set -->
 <div class="content">
-	<div class="inner-content">
-		<div class="row vertical-align">
-			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 left-inner-addon no-padding">
+	<div class="inner-content vertical-align">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<div class="left-inner-addon">
 				<input type="text" class="form-control" ng-model="search" placeholder="Search Product">
 				<i class="glyphicon glyphicon-search" style="color: #000000"></i>
 			</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-				<a ui-sref="merchant.addProduct" class="btn-blue btn-primary pull-right">ADD PRODUCT</a>
-			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<a ui-sref="merchant.addProduct" class="btn-blue btn-primary pull-right">ADD PRODUCT</a>
 		</div>
 	</div>
-	<div class="inner-content">
-		<div class="row">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	<hr/>
+	<div ng-repeat="">
+		<div class="inner-content auto-overflow">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
 				<img src="assets/img/lg_nexus_5.jpg" class="product-image"></i>
 			</div>
-			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-				<div class="row no-margin">
-					<span class="product-name"><strong>{{ product.product_name }}</strong></span>
-					<a ui-sref="merchant.addProduct" class="link-blue pull-right"><i class="fa fa-edit"></i> Edit</a>
-				</div>
-				<div class="row no-margin">
-					<span class="product-price">{{ product.product_price }}</span>
-					<a ui-sref="merchant.addProduct" class="link-blue pull-right"><i class="fa fa-copy"></i> Copy Link</a>
-				</div>
-				<div class="row product-details-wrapper no-margin">
-					<table class="product-details-table">
-						<tr class="product-details-row">
-							<td><i class="fa fa-briefcase"></i> Weight</td>
-							<td>{{ product.weight == '' ? 'n/a' : product.weight + 'gr' }}</td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-truck"></i> Insurance</td>
-							<td>{{ product.insurance == '' ? 'n/a' : product.insurance + 'gr' }}</td>
-						</tr>
-					</table>
-				</div>
-			</div>		
-			<hr/>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+				<span class="product-name-label"><strong>LG Nexus 5</strong></span>
+				<span class="product-price-label"><strong>Rp 5.000.000</strong></span>
+				<a ui-sref="merchant.addProduct" class="link-blue"><i class="fa fa-edit"></i> Edit</a>
+			</div>
 		</div>
+		<hr/>
 	</div>
 
 </div>

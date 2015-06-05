@@ -13,7 +13,7 @@
 }
 /* Html and Body Style */
 html, body {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   font-family: "Proxima Nova";
 }
@@ -32,6 +32,11 @@ header {
   height: 100%;
 }
 
+.login-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
 .inner-content {
   padding: 10px 20px; 
 }
@@ -42,8 +47,20 @@ header {
   padding: 10px 0px;
 }
 
+.login-content {
+  background: @dark-gray;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  color: @white;
+}
+
 .content {
   width: 100%;
+  min-height: 100%;
+  padding-bottom: 20px;
 }
 
 .no-margin {
@@ -84,20 +101,20 @@ header {
 
 .title {
 	overflow: auto;
-	text-align: center;
 	height: 100%;	
-	color: @white;
-	font-size: 24px;
+	font-size: 2em;
 }
 
 .subtitle {
-	font-size: 16px;
+	font-size: 1.5em;
 	color: @dark-gray;
+  display: inline-block;
+  padding-bottom: 20px;
 }
 
 .subdetails {
 	display: block;
-	font-size: 10px;
+	font-size: 0.9em;
 	color: @light-gray;
 	padding-bottom: 5px;
 }
@@ -105,7 +122,7 @@ header {
 .text-label {
   display: block;
   color: @dark-gray;
-  font-size: 12px;
+  font-size: 1em;
 }
 
 .details-group {
@@ -113,7 +130,14 @@ header {
 }
 
 .link-blue {
+  display: block;
+  font-size: 1.2em;
   color: @blue;
+}
+
+.link-orange {
+  font-size: 1.2em;
+  color: @orange;
 }
 
 /* Horizontal Lines */
@@ -153,11 +177,11 @@ hr {
 /* Product Info and Product Number */
 .product-info-label {
 	color: @dark-gray;
-	font-size: 12px;
+	font-size: 1em;
 }
 
 .product-number-label {
-	font-size: 40px;
+	font-size: 3em;
 }
 .product-number-label.green {
 	color: #009344;
@@ -170,7 +194,7 @@ hr {
 .btn-primary {
   text-transform: uppercase;
   display: inline-block;
-  width: 100%;
+  width: auto;
   margin-bottom: 0;
   font-weight: normal;
   text-align: center;
@@ -178,8 +202,8 @@ hr {
   cursor: pointer;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 3px 12px;
-  font-size: 10px;
+  padding: 5px 12px;
+  font-size: 1em;
   line-height: 1.428571429;
 }
 .btn-dark-gray {
@@ -215,11 +239,17 @@ hr {
 .form-label {
 	display: block;
 	color: @dark-gray;
-	font-size: 14px;	
+	font-size: 1em;	
 }
 /* Text Field */
 .form-control {
   border-radius: 0px;
+}
+.form-login {
+  color: @white;
+  border-style: none;
+  border-bottom: 1px solid @white;
+  background: none;
 }
 input[type="text"] {
     position: relative; 
@@ -355,10 +385,26 @@ select:disabled {
 }
 
 .logo {
-  background: url(../img/vt_logo.png) no-repeat;
+  background: url(../img/vt_logo_white.png) no-repeat;
   background-size: 40px 40px;
   height: 40px;
   width: 40px;
+  display: inline-block;
+}
+
+.logo-gray {
+  background: url(../img/vt_logo_gray.png) no-repeat;
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.logo-white {
+  background: url(../img/vt_logo_white.png) no-repeat;
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
   display: inline-block;
 }
 
@@ -433,13 +479,15 @@ select:disabled {
   background: @light-gray;
 }
 
-.product-name {
-  font-size: 18px;
+.product-name-label {
+  display: block;
+  font-size: 1.2em;
   color: @dark-gray;
 }
 
-.product-price {
-  font-size: 18px;
+.product-price-label {
+  display: block;
+  font-size: 1.2em;
   color: @orange;
 }
 
@@ -469,12 +517,12 @@ select:disabled {
   opacity: 0.9;
   color: @white;
   height: auto;
-  padding: 20px;
+  padding: 20px 10px;
+  width: 80%;
+  height: 30%;
 }
 
 .absolute-center {
-  width: 80%;
-  height: 30%;
   overflow: auto;
   margin: auto;
   position: absolute;
@@ -483,4 +531,18 @@ select:disabled {
 
 .center-container {
   position: relative;
+}
+
+/* Settings Style */
+.subtitle-key {
+  display: block;
+  color: @light-gray;
+  border-bottom: 1px solid @light-gray;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.email-label {
+  font-size: 1.5em;
+  color: @orange;
 }
