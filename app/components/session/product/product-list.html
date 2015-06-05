@@ -1,0 +1,39 @@
+<div class="content">
+	<div class="inner-content">
+		<input ng-model="searchProduct">
+	</div>
+	<div class="inner-content">
+		<div class="row text-center content-wrapper"  ng-repeat="x in product_list | filter : searchProduct">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				{{x}}
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<img src="http://blogs-images.forbes.com/gordonkelly/files/2014/10/Nexus-5-Front-and-Back.jpg" height="100" width="200" alt="Store Logo"></img>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<span class="text-label">LG Nexus</span>
+				<span class="text-label">Rp.5.000.000</span>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a ui-sref="#" class="text-label">edit</span>
+				<a ui-sref="#" class="text-label">delete</span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<span class="text-label"><strong>Weight</strong></span>
+				<span class="text-label"><strong>Insurance</strong></span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<span class="text-label">1.500gr</span>
+				<span class="text-label">Optional</span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<span class="text-label"><strong>Stock</strong></span>
+				<span class="text-label"><strong>Sold</strong></span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<span class="text-label">15</span>
+				<span class="text-label">5</span>
+			</div>
+		</div>
+	</div>
+</div>

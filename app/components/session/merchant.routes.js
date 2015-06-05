@@ -30,6 +30,11 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'addProductController'
     })
 
+    .state('merchant.productList', {
+      url: '/product-list',
+      templateUrl: 'app/components/session/product/product-list.html',
+      controller: 'addProductController'
+    })
 
   // $locationProvider.html5Mode(true);
 
