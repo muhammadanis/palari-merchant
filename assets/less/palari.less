@@ -549,19 +549,22 @@ select:disabled {
 
 /* Transaction Style */
 .transaction-table {
+  table-layout: fixed;
   width: 100%;
   padding: 5px;
   valign: middle;
   text-align: center;
+  border-bottom: 1px solid @light-gray;
+  word-wrap: break-word;
 }
 .transaction-table th{
-  background-color: #000000;
-  color: #ffffff;
+  background-color: @black;
+  color: @white;
   text-align: center;
 }
 .transaction-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
+  background-color: @light-gray;
 }
 .transaction-table tr:nth-child(even) {
-  background-color: #ffffff;
+  background-color: @white;
 }
