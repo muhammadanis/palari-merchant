@@ -42,8 +42,6 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 		});
 	}
 
-	$scope.getProductList();
-
 	$scope.submitProduct = function(){
 		$log.debug($scope.productDetails.product_name);
 		$log.debug($scope.productDetails.product_description);
