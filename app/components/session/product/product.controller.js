@@ -1,4 +1,4 @@
-phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , function($scope, $http, $log, $window){
+phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$stateParams' , function($scope, $http, $log, $window, $stateParams){
 	$scope.productDetails = {
 		product_name: 'product1',
 		product_description: 'description',
@@ -42,8 +42,6 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 		});
 	}
 
-	$scope.getProductList();
-
 	$scope.submitProduct = function(){
 		$log.debug($scope.productDetails.product_name);
 		$log.debug($scope.productDetails.product_description);
@@ -79,3 +77,16 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 	};
 
 }]);
+
+phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$stateParams' , function($scope, $http, $log, $stateParams){
+	$scope.productDetails = {};
+	$scope.choosenProduct = $stateParams.productId;
+
+	$scope.getProductDetails = function(){
+		
+	}
+
+	$scope.getProductDetails();
+}]);
+
+	
