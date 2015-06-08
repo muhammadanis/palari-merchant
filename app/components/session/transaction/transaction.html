@@ -1,0 +1,48 @@
+<!-- Details Unset -->
+<!-- <div class="content">
+	<div class="row">
+		<span class="subtitle">Transaction List</span>
+	</div>
+	<div class="row">
+		<p class="text-label text-center">You haven't had any transactions yet.</p>
+	</div>
+</div> -->
+
+<!-- Details Set -->
+<div class="content" ng-init="getProductList()">
+	<div class="inner-content vertical-align">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<div class="left-inner-addon">
+				<input type="text" class="form-control" ng-model="searchTransaction" placeholder="Search Transaction">
+				<i class="glyphicon glyphicon-search" style="color: #000000"></i>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<div class="right-inner-addon">
+	      		<select ng-model="transactionType">
+		  			<option> Payment Complete </option>
+		  			<option> Payment Pending </option>
+		  			<option> Delivered </option>
+		  			<option> Canceled </option>
+		  			<option> All Transaction </option>
+				</select>
+	      		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
+	  		</div>
+  		</div>
+	</div>
+	<hr/>
+	<table class="transaction-table">
+		<tr>
+			<th> Order ID </th>
+			<th> Date & Time </th>
+			<th> Buyer's Name </th>
+			<th> Item Details </th>
+		</tr>
+		<tr>
+			<td> a </td>
+			<td> b </td>
+			<td> c </td>
+			<td> <a ui-sref="merchant.productDetails"> d </a> </td>
+		</tr>
+	</table>
+</div>
