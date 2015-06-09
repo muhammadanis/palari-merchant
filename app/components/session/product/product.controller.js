@@ -115,8 +115,32 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 	$scope.deleteProduct = function(){
 		$scope.deletePopUp = !$scope.deletePopUp;
 		$state.transitionTo('merchant.product', {arg : 'arg'});	
-	}
+	};
 
+	$scope.updateProduct = function(){
+		$scope.productDetails.id = $scope.choosenProduct;
+		$log.debug($scope.productDetails);
+		$http.post(
+			//url
+			phinisiEndpoint + '/merchant/product/update',
+			$scope.productDetails,
+			{
+				headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,	
+			})
+		.success(function(data,status,headers,config){
+			$log.debug(data);
+			if(data.hasOwnProperty('name')){
+				$log.debug("success update product");
+				$state.transitionTo('merchant.productDetails', {productId: $scope.choosenProduct});
+			}else{
+				$scope.error = data.description;
+			}				
+		})
+		.error(function(data,status,headers,config){
+			$log.debug(data);
+			$scope.error = data.error;			
+		});	
+	};
 }]);
 
 	
