@@ -78,15 +78,45 @@ sessionApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 
 }]);
 
-sessionApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$stateParams' , function($scope, $http, $log, $stateParams){
+phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$state' , '$stateParams' , function($scope, $http, $log, $state, $stateParams){
 	$scope.productDetails = {};
+	$scope.deletePopUp = false;
 	$scope.choosenProduct = $stateParams.productId;
-
 	$scope.getProductDetails = function(){
-		
+		$log.debug($scope.choosenProduct);
+		$http.post(
+			//url
+			phinisiEndpoint + '/merchant/product/detail',
+			//data
+			{
+				id: $scope.choosenProduct,
+			},
+			//config
+			{
+				headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+			})
+		.success(function(data,status,headers,config){
+			if(!data.hasOwnProperty('merchant_id')){
+				$scope.productDetails = data;
+				$log.debug("Get product details success");
+			}
+			else{
+				$scope.error = data.success;
+			}
+		})
+		.error(function(data,status,headers,config){
+			$log.debug(data);
+			$scope.error = data.error;				
+		});
+	};
+	$scope.deleteToggle = function(){
+		$scope.deletePopUp = !$scope.deletePopUp;
+	}
+	$scope.deleteProduct = function(){
+		$scope.deletePopUp = !$scope.deletePopUp;
+		$state.transitionTo('merchant.product', {arg : 'arg'});	
 	}
 
-	$scope.getProductDetails();
 }]);
 
 	

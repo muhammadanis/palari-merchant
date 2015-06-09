@@ -49,6 +49,18 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'changePasswordController'
     })
 
+    .state('merchant.transaction', {
+      url: '/transaction',
+      templateUrl: 'app/components/session/transaction/transaction.html',
+      controller: 'transactionController'
+    })
+
+    .state('merchant.transactionDetails', {
+      url: '/transaction-details/:transactionId',
+      templateUrl: 'app/components/session/transaction/transaction-details.html',
+      controller: 'transactionController'
+    })
+
   // $locationProvider.html5Mode(true);
 
 }]);
