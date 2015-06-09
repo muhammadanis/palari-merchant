@@ -37,6 +37,12 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'productDetailsController'
     })
 
+    .state('merchant.editProduct', {
+      url: '/edit-product/:productId',
+      templateUrl: 'app/components/session/product/edit-product.html',
+      controller: 'productDetailsController'
+    })
+
     .state('merchant.settings', {
       url: '/settings',
       templateUrl: 'app/components/session/settings/settings.html',

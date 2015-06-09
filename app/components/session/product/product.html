@@ -36,7 +36,7 @@
 				<a ui-sref="merchant.productDetails({productId: '{{product.id}}'})" class="product-name-label"><strong>{{product.name == '' ? 'N/A' : product.name }}
 				</strong></a>
 				<span class="product-price-label"><strong>{{product.price | mycurrency}}</strong></span>
-				<a ui-sref="merchant.addProduct" class="link-blue"><i class="fa fa-edit"></i> Edit</a>
+				<a ui-sref="merchant.editProduct({productId: '{{product.id}}'})" class="link-blue"><i class="fa fa-edit"></i> Edit</a>
 			</div>
 		</div>
 		<hr/>
