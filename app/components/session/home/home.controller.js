@@ -45,4 +45,11 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 					$scope.error = data.error;				
 				});
 			};
-	}])
+
+		$scope.getDetails = function(){
+
+		};
+
+		$scope.getDetails();
+
+	}]);

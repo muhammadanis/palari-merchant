@@ -20,7 +20,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 
 		$scope.checkSession = function(){
 			if($window.sessionStorage.token){
-				// $state.transitionTo('token', {arg : 'arg'});
+				// $state.transitionTo('merchant.home', {arg : 'arg'});
 			}
 		}
 
@@ -43,8 +43,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 					console.log(data);
 					if(data.success){
 						$window.sessionStorage.token = data.token;
-						$state.transitionTo('merchant.home', {arg : 'arg'});
-						console.log('success register ' + data.token);						
+						$state.transitionTo('merchant.home', {arg : 'arg'});										
 					}else{
 						$scope.error = data.description;						
 					}
