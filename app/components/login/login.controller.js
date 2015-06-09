@@ -1,4 +1,4 @@
-phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
+normalApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
@@ -7,7 +7,7 @@ phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-phinisiApp.controller('loginController', ['$rootScope',
+normalApp.controller('loginController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
@@ -40,7 +40,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 				})
 			.success(function(data,status,headers,config){
 				if(data.success){
-					console.log(data);
+					$log.info(data);
 					if(data.success){
 						$window.sessionStorage.token = data.token;
 						$state.transitionTo('merchant.home', {arg : 'arg'});										
