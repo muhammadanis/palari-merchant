@@ -51,7 +51,7 @@ normalApp.controller('loginController', ['$rootScope',
 				console.log(data);			
 			})
 			.error(function(data,status,headers,config){
-				console.log(data);
+				$log.debug(data);
 				$scope.error = data.error;				
 			});
 		};
