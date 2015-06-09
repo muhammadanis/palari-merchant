@@ -30,7 +30,6 @@
 	  		</div>
   		</div>
 	</div>
-	<hr/>
 	<div class="inner-content">
 		<table class="transaction-table">
 			<tr>
@@ -41,7 +40,7 @@
 			</tr>
 			<tr ng-repeat="transaction in transactions">
 				<td> 
-					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.transaction_id}}'})" class="link-orange">{{$index}} {{transaction.order_id}}</a>
+					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.transaction_id}}'})" class="link-orange"><u>{{$index}} {{transaction.order_id}}</u></a>
 				</td>
 				<td>{{transaction.date_time}}</td>
 				<td>{{transaction.buyer_name}}</td>

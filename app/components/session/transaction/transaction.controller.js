@@ -1,7 +1,7 @@
 phinisiApp.controller('transactionController', ['$scope' , '$http' , '$log' , '$window' , '$state' ,'$stateParams' , 
 	function($scope, $http, $log, $window, $state, $stateParams){
 		$scope.transactionType = 0;
-		$scope.transactions = [1,2,3];
+		$scope.transactions = {};
 		$scope.shipping = !false;
 		$scope.confirm = false;
 		$scope.cancel = false;
