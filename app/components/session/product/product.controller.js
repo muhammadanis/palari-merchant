@@ -78,7 +78,7 @@ sessionApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 
 }]);
 
-phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$state' , '$stateParams' , function($scope, $http, $log, $state, $stateParams){
+sessionApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$state' , '$stateParams' , function($scope, $http, $log, $state, $stateParams){
 	$scope.productDetails = {};
 	$scope.deletePopUp = false;
 	$scope.choosenProduct = $stateParams.productId;
