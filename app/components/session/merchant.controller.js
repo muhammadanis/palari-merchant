@@ -1,4 +1,4 @@
-phinisiApp.controller('merchantController', function($scope, $window, $rootScope) {
+sessionApp.controller('merchantController', function($scope, $window, $rootScope) {
 	$scope.$window = $window;
 	$scope.showMenu = false;
 

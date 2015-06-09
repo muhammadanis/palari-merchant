@@ -1,4 +1,4 @@
-phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log', 
+sessionApp.controller('detailsController', ['$scope', '$http', '$window', '$log', 
 	function($scope, $http, $window, $log){
 		$scope.storeDetails = {
 			merchant_details: {

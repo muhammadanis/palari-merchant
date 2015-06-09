@@ -17,7 +17,7 @@ phinisiApp.factory('authInterceptor', ['$rootScope', '$q' , '$window', function(
 	};
 }]);
 
-phinisiApp.config(function($httpProvider, $windowProvider) {	
+sessionApp.config(function($httpProvider, $windowProvider) {	
 	$httpProvider.interceptors.push('authInterceptor');
 	var myWindow = $windowProvider.$get();	
 	$httpProvider.defaults.transformRequest = function(data){

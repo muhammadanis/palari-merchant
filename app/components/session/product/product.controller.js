@@ -1,4 +1,4 @@
-phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$stateParams' , function($scope, $http, $log, $window, $stateParams){
+sessionApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$stateParams' , function($scope, $http, $log, $window, $stateParams){
 	$scope.productDetails = {
 		name: 'product1',
 		description: 'description',
@@ -78,7 +78,7 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 
 }]);
 
-phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$stateParams' , function($scope, $http, $log, $stateParams){
+sessionApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$stateParams' , function($scope, $http, $log, $stateParams){
 	$scope.productDetails = {};
 	$scope.choosenProduct = $stateParams.productId;
 

@@ -1,4 +1,4 @@
-phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
+normalApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
@@ -7,7 +7,7 @@ phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-phinisiApp.controller('loginController', ['$rootScope',
+normalApp.controller('loginController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
