@@ -8,7 +8,7 @@
 			<div class="form-group">
 	          <span class="form-label">Product Name</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="product_name" ng-model="productDetails.product_name" required>
+	            <input type="text" class="form-control" name="product_name" ng-model="productDetails.name" required>
 	            <div ng-show="addProductForm.$submitted || addProductForm.productname.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.productname.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.productname.$valid"></i>
@@ -20,7 +20,7 @@
 	        <div class="form-group">
 	          <span class="form-label">Product Description</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="product_description" ng-model="productDetails.product_description" required>
+	            <input type="text" class="form-control" name="product" ng-model="productDetails.description" required>
 	            <div ng-show="addProductForm.$submitted || addProductForm.product_description.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_description.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_description.$valid"></i>
@@ -32,7 +32,7 @@
 	        <div class="form-group">
 	          <span class="form-label">Price</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="product_price" ng-model="productDetails.product_price" required validation-type="integer">
+	            <input type="text" class="form-control" name="product_price" ng-model="productDetails.price" required validation-type="integer">
 	            <div ng-show="addProductForm.$submitted || addProductForm.product_price.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_price.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_price.$valid"></i>
@@ -75,7 +75,7 @@
 				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
 		            <div class="right-inner-addon">
                       <div class="input-group">
-                        <input type="text" class="form-control" name="product_weight" maxlength="11" ng-model="productDetails.product_weight" ng-disabled="!enableShipping" validation-type="decimal" required>
+                        <input type="text" class="form-control" name="product_weight" maxlength="11" ng-model="productDetails.weight" ng-disabled="!enableShipping" validation-type="decimal" required>
                       	<span class="input-group-addon" id="basic-addon1">gram</span>
                       </div>
                       <div ng-show="form.$submitted || addProductForm.product_weight.$touched">
