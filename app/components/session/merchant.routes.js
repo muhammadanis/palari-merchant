@@ -67,6 +67,11 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'transactionController'
     })
 
+    .state('merchant.signout', {
+      url: '/signout',
+      templateUrl: 'app/components/session/home/home.html',
+      controller: 'signoutController'
+    })
   // $locationProvider.html5Mode(true);
 
 }]);

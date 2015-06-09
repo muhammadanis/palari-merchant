@@ -17,17 +17,17 @@ phinisiApp.factory('authInterceptor', ['$rootScope', '$q' , '$window', function(
 	};
 }]);
 
-sessionApp.config(function($httpProvider, $windowProvider) {	
+
+phinisiApp.config(function($httpProvider, $windowProvider) {	
 	$httpProvider.interceptors.push('authInterceptor');
 	var myWindow = $windowProvider.$get();	
 	$httpProvider.defaults.transformRequest = function(data){
 		if(myWindow.sessionStorage.token){
-			if(data){
+			if(data){				
+				data.token = myWindow.sessionStorage.token;
 				console.log('request data: ' + data);	
-				data.token = myWindow.sessionStorage.token;	
-				console.log(data);			
-			}
-			return angular.toJson(data);
+			}			
 		}
+		return angular.toJson(data);
 	}	
 });

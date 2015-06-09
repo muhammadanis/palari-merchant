@@ -1,4 +1,4 @@
-sessionApp.controller('merchantController', function($scope, $window, $rootScope) {
+phinisiApp.controller('merchantController', function($scope, $window, $rootScope) {
 	$scope.$window = $window;
 	$scope.showMenu = false;
 
@@ -31,6 +31,31 @@ sessionApp.controller('merchantController', function($scope, $window, $rootScope
 
     }
 
-})
+});
+
+phinisiApp.controller('signoutController', ['$http', '$scope', '$window', '$log', '$state', function($http, $scope, $window, $log, $state){
+
+    $scope.signout = function(){        
+
+        $http.get(
+            phinisiEndpoint + '/merchant/signout/' + $window.sessionStorage.token 
+        )
+        .success(function(data,status,headers,config){
+            $log.debug(data);
+            if(data.success){                
+                $window.sessionStorage.token = null;
+                $state.transitionTo('login');   
+            }
+        })
+        .error(function(data,status,headers,config){
+            $log.debug(data.error);
+        });    
+    }
+
+    $scope.signout();
+    
+}]);
+
+
 
 

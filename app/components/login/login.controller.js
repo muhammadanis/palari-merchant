@@ -1,4 +1,4 @@
-normalApp.config(function($sceDelegateProvider, $httpProvider) {
+phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
@@ -51,7 +51,7 @@ normalApp.controller('loginController', ['$rootScope',
 				console.log(data);			
 			})
 			.error(function(data,status,headers,config){
-				console.log(data);
+				$log.debug(data);
 				$scope.error = data.error;				
 			});
 		};

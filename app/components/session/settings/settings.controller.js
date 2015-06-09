@@ -1,4 +1,4 @@
-sessionApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log', '$window',
+phinisiApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$location', '$log', '$window',
 	function($rootScope, $scope, $http, $location, $log, $window){
 		$scope.tokenModel = {};
 		$scope.tokenModel.sandbox = {};
@@ -61,7 +61,7 @@ sessionApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 		$scope.getToken();
 }]);
 
-sessionApp.controller('changePasswordController', function($scope){
+phinisiApp.controller('changePasswordController', function($scope){
 	$scope.currentPassword = '';
 	$scope.newPassword = '';
 	$scope.confirmNewPassword = '';
