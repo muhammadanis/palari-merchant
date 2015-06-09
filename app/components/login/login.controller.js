@@ -1,4 +1,4 @@
-normalApp.config(function($sceDelegateProvider, $httpProvider) {
+phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
