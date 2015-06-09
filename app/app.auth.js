@@ -24,7 +24,7 @@ sessionApp.config(function($httpProvider, $windowProvider) {
 		if(myWindow.sessionStorage.token){
 			if(data){
 				console.log('request data: ' + data);	
-				data.token = myWindow.sessionStorage.token;	
+				// data.token = myWindow.sessionStorage.token;	
 				console.log(data);			
 			}
 			return angular.toJson(data);

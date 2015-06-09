@@ -34,15 +34,10 @@ sessionApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 		};
 
 		$scope.getToken = function(){
-			$scope.tokenModel.sandbox.server_key = "server_key1";
-			$scope.tokenModel.sandbox.client_key = "client_key2";
-			$scope.tokenModel.production.server_key = "server_key3";
-			$scope.tokenModel.production.client_key = "client_key4";
 
 			$http.get(
 				//url
-				phinisiEndpoint + '/merchant/key/' + $window.sessionStorage.token,
-				{},
+				phinisiEndpoint + '/merchant/key/' + $window.sessionStorage.token,				
 				//config
 				{
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
@@ -51,6 +46,10 @@ sessionApp.controller('tokenController', ['$rootScope', '$scope', '$http', '$loc
 			)
 			.success(function(data){
 				$log.debug('get token data: ' + data);
+				$scope.tokenModel.sandbox.server_key = data.sandbox.server_key;
+				$scope.tokenModel.sandbox.client_key = data.sandbox.client_key;
+				$scope.tokenModel.production.server_key = data.production.server_key;
+				$scope.tokenModel.production.client_key = data.production.client_key;				
 			})
 			.error(function(data){
 				$scope.error = data.description;				
