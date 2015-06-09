@@ -8,21 +8,38 @@
 	<div class="center-block text-center">
 		<span class="title text-center">Register New Account</span>
 	</div>
-	<form role="form" ng-submit="register()">
+	<form role="form" name="registerForm" ng-submit="register()">
 		<div class="form-group">
 			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" ng-model="regModel.username">
+			<div class="right-inner-addon">
+				<input type="text" class="form-underline form-register" id="username" name="username" ng-model="regModel.username" required />
+	            <div ng-show="registerForm.$submitted || registerForm.username.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="registerForm.username.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!registerForm.username.$valid"></i>
+	              <span class="error-message" ng-show="registerForm.username.$error.required">Username is required.</span>
+	            </div>
+          	</div>
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" name="password" ng-model="regModel.password">
+			<div class="right-inner-addon">
+				<input type="password" class="form-underline form-register" id="password" name="password" ng-model="regModel.password" validation-type="password" required />
+			    <div ng-show="registerForm.$submitted || registerForm.password.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="registerForm.password.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!registerForm.password.$valid"></i>
+	              <span class="error-message" ng-show="registerForm.password.$error.required">Password is required.</span>
+	              <span class="error-message" ng-show="registerForm.password.$error.password">Password must be at least one uppercase, one lowercase, a number and 8 characters long.</span>
+	            </div>
+          	</div>
 		</div>
 
-		<span class="text-label">By clicking sign up button, you agree to our user's privacy <a ui-sref="register" class="link-orange">terms and agreements.</a></span>
+		<span class="text-default">By clicking sign up button, you agree to our user's privacy <a ui-sref="register" class="link-orange">terms and agreements.</a></span>
 		
-		<button type="submit" class="btn-primary" style="width: 100%; margin:10px 0px;">SIGN UP</button>
+		<button type="submit" class="btn-primary" style="width: 100%; margin:10px 0px;"><strong>SIGN UP</strong></button>
 
-		<span class="text-label">Already have an account? <a ui-sref="login" class="link-orange">Sign In</a></span>
+		<div class="text-center">
+			<span class="text-default">Already have an account? <a ui-sref="login" class="link-orange">Sign In</a></span>
+		</div>
 	</form>
 
 </div>
