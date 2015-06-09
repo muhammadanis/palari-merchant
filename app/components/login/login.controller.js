@@ -40,7 +40,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 				})
 			.success(function(data,status,headers,config){
 				if(data.success){
-					console.log(data);
+					$log.info(data);
 					if(data.success){
 						$window.sessionStorage.token = data.token;
 						$state.transitionTo('merchant.home', {arg : 'arg'});										

@@ -19,9 +19,9 @@ phinisiApp.factory('authInterceptor', ['$rootScope', '$q' , '$window', function(
 
 phinisiApp.config(function($httpProvider, $windowProvider) {	
 	$httpProvider.interceptors.push('authInterceptor');
-	var myWindow = $windowProvider.$get();
-	if(myWindow.sessionStorage.token){
-		$httpProvider.defaults.transformRequest = function(data){
+	var myWindow = $windowProvider.$get();	
+	$httpProvider.defaults.transformRequest = function(data){
+		if(myWindow.sessionStorage.token){
 			if(data){
 				console.log('request data: ' + data);	
 				data.token = myWindow.sessionStorage.token;	

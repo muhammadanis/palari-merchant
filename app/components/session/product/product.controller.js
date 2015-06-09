@@ -51,8 +51,8 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 		$log.debug($scope.productDetails.insurance);
 
 		if(!$scope.enableShipping){
-			$scope.productDetails.product_weight =0;
-			$scope.productDetails.product_insurance = 0;
+			$scope.productDetails.weight =0;
+			$scope.productDetails.insurance = 0;
 		}
 
 		$http.post(
