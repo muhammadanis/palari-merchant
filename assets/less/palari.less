@@ -124,6 +124,12 @@ header {
   color: @dark-gray;
   font-size: 1em;
 }
+.text-label-center {
+  display: block;
+  color: @dark-gray;
+  font-size: 1em;
+  text-align: center;
+}
 
 .details-group {
 	margin-bottom: 5px;
@@ -217,6 +223,7 @@ hr {
 
 .btn-light-gray {
   background: @light-gray;
+  color:black;
 }
 .btn-light-gray:focus,
 .btn-light-gray:hover {
@@ -551,7 +558,7 @@ select:disabled {
 .transaction-table {
   table-layout: fixed;
   width: 100%;
-  padding: 5px;
+  padding: 5px 0px 5px 0px;
   valign: middle;
   text-align: center;
   border-bottom: 1px solid @light-gray;
@@ -561,10 +568,38 @@ select:disabled {
   background-color: @black;
   color: @white;
   text-align: center;
+  padding: 5px 5px 5px 5px;
+}
+.transaction-table td{
+  padding: 5px 5px 5px 5px;
 }
 .transaction-table tr:nth-child(odd) {
   background-color: @light-gray;
 }
 .transaction-table tr:nth-child(even) {
   background-color: @white;
+}
+.transaction-details-table{
+  table-layout: fixed;
+  padding: 5px 5px 5px 5px;
+  valign: top;
+  text-align: left;
+  border: 1px solid @light-gray;
+  word-wrap: break-word;
+  width:100%;
+}
+.transaction-details-table th{
+  background-color: #7A7A7A;
+  color: @white;
+  padding: 5px 5px 5px 5px;
+}
+.transaction-details-table td{
+  padding: 3px 5px 3px 5px;
+}
+.transaction-details-table td:nth-child(1){
+  font-weight: bold;
+  width:25%;
+}
+.transaction-details-table td:nth-child(2){
+  width:75%;
 }

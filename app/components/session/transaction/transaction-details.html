@@ -1,0 +1,88 @@
+<div class="content">
+	<div class="inner-content">
+		<a ui-sref="merchant.transaction" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Back</a>
+		<span class="subtitle"><strong>Transaction Details</strong></span>
+	</div>
+	
+	<div class="inner-content">
+		<div class="center-block auto-overflow">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<span class="text-label-center"><strong>Order ID</strong></span>
+				<span class="text-label-center">Order ID</span>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<span class="text-label-center"><strong>Amount</strong></span>
+				<span class="text-label-center">Amount</span>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<span class="text-label-center"><strong>Status</strong></span>
+				<span class="text-label-center">Status</span>
+			</div>
+		</div>		
+	</div>
+	
+	<div class="inner-content">
+		<table class="transaction-details-table">
+			<tr><th colspan="2">Customer Information</th></tr>
+			<tr><td>Name</td><td>Name</td></tr>
+			<tr><td>Phone</td><td>Phone</td></tr>
+			<tr><td>Email</td><td>Email</td></tr>
+		</table>
+	</div>
+	<div class="inner-content">	
+		<table class="transaction-details-table">
+			<tr><th colspan="2">Purchase Details</th></tr>
+			<tr><td>Product Name</td><td>Product Name</td></tr>
+			<tr><td>Price</td><td>Price</td></tr>
+			<tr><td>Quantity</td><td>Quantity</td></tr>
+			<tr><td>Variation</td><td>Variation</td></tr>
+		</table>
+	</div>
+	<div class="inner-content" ng-show="shipping">
+		<table class="transaction-details-table">
+			<tr><th colspan="2">Shipping Information</th></tr>
+			<tr><td>Recipient's Name</td><td>Recipient's Name</td></tr>
+			<tr><td>Recipient's Phone</td><td>Recipient's Phone</td></tr>
+			<tr><td>Address</td><td>Address</td></tr>
+			<tr><td>Shipping Agency</td><td>Shipping Agency</td></tr>
+			<tr><td>Service Type</td><td>Service Type</td></tr>
+			<tr><td>Shipping Cost</td><td>Shipping Cost</td></tr>
+		</table>
+	</div>
+
+	<div class="row">
+		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+			<button class="btn-light-gray btn-primary" ng-click="cancleToggle()">CANCEL ORDER</button>
+		</p>
+		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+			<button class="btn-blue btn-primary" ng-click="confirmToggle()">CONFIRM DELIVERY</button>
+		</p>
+	</div>
+	
+	<div class="dialog-box absolute-center text-center" ng-show="confirm">
+		<span class="subtitle center-block" style="color: #FFFFFF"><strong>Confirm Delivery</strong></span>
+		<div ng-show="shipping">
+			<span class="text-label" style="color: #FFFFFF">Please enter your tracking id below</span>
+			<input type="text" class="form-control" ng-model="trackingId"><br/>
+		</div>
+		<div ng-show=!shipping>
+			<span class="text-label" style="color: #FFFFFF">Are you sure your product has been delivered to your customer?</span><br/>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<button class="btn-light-gray btn-primary pull-left" style="width: 100% !important" ng-click="confirmToggle()">CANCEL</button>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<button class="btn-orange btn-primary pull-right" style="width: 100% !important" ng-click="confirmOrder()">CONFIRM</button>
+		</div>
+	</div>
+	<div class="dialog-box absolute-center text-center" ng-show="cancel">
+		<span class="subtitle center-block" style="color: #FFFFFF"><strong>Cancel Order</strong></span>
+		<span class="text-label" style="color: #FFFFFF">Are you sure you want to cancel the order?</span><br/>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<button class="btn-light-gray btn-primary pull-left" style="width: 100% !important" ng-click="cancleToggle()">NO</button>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<button class="btn-orange btn-primary pull-right" style="width: 100% !important" ng-click="cancelOrder()">YES</button>
+		</div>
+	</div>
+</div>
