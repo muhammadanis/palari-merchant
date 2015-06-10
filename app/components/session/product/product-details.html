@@ -1,34 +1,35 @@
-<div class="content">
+<div class="content" ng-init="getProductDetails()">
 	<div class="inner-content">
-		<a ui-sref="merchant.product" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Back</a>
-		<span class="subtitle"><strong>Product Details</strong></span>
+		<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6 subtitle"><strong>Product Details</strong></span>
+		<a ui-sref="merchant.product" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 link-blue text-right"><i class="fa fa-arrow-left"></i> Back</a>	
 	</div>
+	<br/>
 	<div class="inner-content">
 		<div class="center-block text-center">
-			<img src="assets/img/lg_nexus_5.jpg" class="product-image" style="width: 80% !important"></i>
+			<img src="{{productDetails.image_url[0]}}" class="product-image" style="width: 80% !important"></i>
 		</div>
 	</div>
 	<div class="inner-content">
 		<div class="center-block auto-overflow">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<a ui-sref="merchant.addProduct" class="link-blue pull-left"><i class="fa fa-edit"></i> Edit</a>
-			</div>
-			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-				<a ui-sref="merchant.addProduct" class="link-blue"><i class="fa fa-copy"></i> Copy Link</a>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a ui-sref="merchant.editProduct({productId: '{{choosenProduct}}'})" class="link-blue pull-left"><center><i class="fa fa-edit"></i> Edit</center></a>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a ui-sref="merchant.addProduct" class="link-blue pull-right"><i class="fa fa-trash"></i> Delete</a>		
+				<a ui-sref="merchant.addProduct" class="link-blue"><center><i class="fa fa-copy"></i> Copy Link</center></a>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a class="link-blue pull-right" ng-click="deleteToggle()"><center><i class="fa fa-trash"></i> Delete</center></a>		
 			</div>
 		</div>		
 		<div style="margin: 10px 0px;">
 			<div class="center-block text-center">
-				<span class="product-name-label"><strong> {{merchantProduct}}</strong></span>
+				<span class="product-name-label"><strong> {{productDetails.name}}</strong></span>
 			</div>				
 			<div class="center-block text-center">
-				<span class="product-price-label">Rp 5.000.000</span>
+				<span class="product-price-label">{{productDetails.price | mycurrency}}</span>
 			</div>
 			<div class="center-block text-center">
-				<span class="product-description">Smartphone with 13 Megapixel Camera</span>
+				<span class="product-description">{{productDetails.description}}</span>
 			</div>
 		</div>
 
@@ -46,14 +47,14 @@
 		</div>
 	</div>
 
-	<div class="dialog-box absolute-center text-center">
+	<div class="dialog-box absolute-center text-center" ng-show="deletePopUp">
 		<span class="subtitle center-block" style="color: #FFFFFF"><strong>Product Details</strong></span>
 		<span class="text-label" style="color: #FFFFFF">Are you sure want to delete this product?</span><br/>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-			<button class="btn-light-gray btn-primary pull-left" style="width: 100% !important">NO</button>
+			<button class="btn-light-gray btn-primary pull-left" style="width: 100% !important" ng-click="deleteToggle()">NO</button>
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-			<button class="btn-orange btn-primary pull-right" style="width: 100% !important">YES</button>
+			<button class="btn-orange btn-primary pull-right" style="width: 100% !important" ng-click="deleteProduct()">YES</button>
 		</div>
 	</div>
 

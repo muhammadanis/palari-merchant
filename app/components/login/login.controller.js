@@ -7,7 +7,7 @@ phinisiApp.config(function($sceDelegateProvider, $httpProvider) {
 	])
 });
 
-phinisiApp.controller('loginController', ['$rootScope',
+normalApp.controller('loginController', ['$rootScope',
 	'$scope',
 	'$http',
 	'$location',
@@ -40,7 +40,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 				})
 			.success(function(data,status,headers,config){
 				if(data.success){
-					console.log(data);
+					$log.info(data);
 					if(data.success){
 						$window.sessionStorage.token = data.token;
 						$state.transitionTo('merchant.home', {arg : 'arg'});										
@@ -51,7 +51,7 @@ phinisiApp.controller('loginController', ['$rootScope',
 				console.log(data);			
 			})
 			.error(function(data,status,headers,config){
-				console.log(data);
+				$log.debug(data);
 				$scope.error = data.error;				
 			});
 		};

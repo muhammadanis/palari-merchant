@@ -37,6 +37,12 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'productDetailsController'
     })
 
+    .state('merchant.editProduct', {
+      url: '/edit-product/:productId',
+      templateUrl: 'app/components/session/product/edit-product.html',
+      controller: 'productDetailsController'
+    })
+
     .state('merchant.settings', {
       url: '/settings',
       templateUrl: 'app/components/session/settings/settings.html',
@@ -49,6 +55,23 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
       controller: 'changePasswordController'
     })
 
+    .state('merchant.transaction', {
+      url: '/transaction',
+      templateUrl: 'app/components/session/transaction/transaction.html',
+      controller: 'transactionController'
+    })
+
+    .state('merchant.transactionDetails', {
+      url: '/transaction-details/:transactionId',
+      templateUrl: 'app/components/session/transaction/transaction-details.html',
+      controller: 'transactionController'
+    })
+
+    .state('merchant.signout', {
+      url: '/signout',
+      templateUrl: 'app/components/session/home/home.html',
+      controller: 'signoutController'
+    })
   // $locationProvider.html5Mode(true);
 
 }]);

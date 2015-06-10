@@ -1,9 +1,9 @@
-<div class="content">
-	<form name="addProductForm" ng-submit="submitProduct()" novalidate>
+<div class="content" ng-init="getProductDetails()">
+	<form name="editProductForm" ng-submit="updateProduct()" novalidate>
 		
 		<div class="inner-content">
 			<a ui-sref="merchant.product" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Cancel</a>			
-			<span class="subtitle"><strong>Add Product</strong></span>
+			<span class="subtitle"><strong>Edit Product</strong></span>
 	    	
 			<div class="form-group">
 	          <span class="form-label">Product Name</span>
@@ -107,7 +107,7 @@
 		</div>
 	
 		<div class="center-block text-center">
-			<input type="submit" id="submit" class="btn-blue btn-primary" value="ADD PRODUCT" />
+			<input type="submit" id="submit" class="btn-blue btn-primary" value="UPDATE PRODUCT" />
 		</div>
 
 	</form>
