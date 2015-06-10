@@ -1,0 +1,25 @@
+<!-- Payment Form -->
+<form name="form" novalidate>
+
+  <div class="payment-page">
+    <!-- Payment Select Section -->
+    <div class="payment-select-section wrapper" style="z-index: 9999">
+      <div class="inner-wrapper no-padding">
+        <dropdown placeholder="Select Your Payment Method..." list="payments" selected="paymentType" property="display_name" ng-model="paymentType" ng-change="go(paymentType.payment_type)">
+        </dropdown>
+<!--           <div class="right-inner-addon">
+              <select ng-model="productDetails.insurance">
+                <option class="fa fa-credit-card"> Credit Card</option>
+                <option class="fa fa-lg fa-diamond"> Bank Transfer</option>
+                <option class="bbm-logo"> BBM Money</option>
+              </select>
+              <i class="glyphicon glyphicon-triangle-bottom border-left"></i>
+          </div>
+ -->   </div>
+  {{paymentType}}
+    </div>
+
+  </div>
+
+<!-- End of Payment Form -->
+</form>

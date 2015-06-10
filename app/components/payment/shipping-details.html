@@ -1,0 +1,96 @@
+<div class="wrapper" ng-init="toggle = false">
+    <div class="inner-wrapper vertical-align" ng-click="toggle = !toggle">
+      <div class=" col-xs-7 col-md-8 no-padding">
+        <span class="small-text-label">TOTAL AMOUNT</span>
+        <span class="total-amount-label" ng-cloak>{{ totalPrice() | mycurrency}}</span>
+      </div>
+      <div class=" col-xs-5 col-md-4 no-padding">
+        <i class="glyphicon pull-right" ng-class="toggle ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'" style="font-size:1.5em; margin-right:20px;"></i>
+      </div>
+    </div>
+
+  <!-- Purchased Items -->
+  <div class="purchased-product-section animate-show" ng-show="toggle">
+    <div class="inner-wrapper" ng-cloak>
+
+      <!-- Row 1 -->
+      <div class="row item" ng-repeat="item in purchasedProducts">
+        <div class="col-md-5 col-xs-5">
+          <img class="item-image" src="/assets/img/lg_nexus_5.jpg">
+        </div>
+        <div class="col-md-7 col-xs-7">
+          <span class="item-name">{{ item.name }}</span>
+          <span class="price">{{ item.price | mycurrency}}</span>
+        </div>
+      </div>
+      
+      <hr class="hr-product" ng-show="purchasedProducts.length != 1"/>
+      
+      <!-- Row 3 -->
+      <div class="row item" ng-show="purchasedProducts.length != 1">
+        <div class="col-md-8 col-xs-6">
+          <span class="item-name">Total</span>
+        </div>
+        <div class="col-md-4 col-xs-6">
+          <span class="price total">{{ totalPrice() | mycurrency }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper tab">
+  <div class="tab">    
+    <h5>Customer Details</h5> 
+    <div class="inner-wrapper inner-content">
+      <p align="justify">Welcome to BBM Pay! It seems this is your first time purchasing product from our system. Please complete the information below</p>
+          <div class="form-group">
+            <span class="text-label">FULL NAME</span>
+            <div class="right-inner-addon">
+              <input type="text" class="form-control" name="firstname" ng-model="customerDetails.first_name" required>
+              <div ng-show="form.$submitted || shippingForm.firstname.$touched">
+                <i class="glyphicon glyphicon-ok" ng-show="shippingForm.firstname.$valid"></i>
+                <i class="glyphicon glyphicon-remove" ng-show="!shippingForm.firstname.$valid"></i>
+                <span class="error-message" ng-show="shippingForm.firstname.$error.required">First Name is required.</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <span class="text-label">EMAIL ADDRESS</span>
+            <div class="right-inner-addon">
+              <input type="text" class="form-control" name="lastname" ng-model="customerDetails.billing_address.last_name" required>
+              <div ng-show="form.$submitted || shippingForm.lastname.$touched">
+                <i class="glyphicon glyphicon-ok" ng-show="shippingForm.lastname.$valid"></i>
+                <i class="glyphicon glyphicon-remove" ng-show="!shippingForm.lastname.$valid"></i>
+                <span class="error-message" ng-show="shippingForm.lastname.$error.required">Last Name is required.</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <span class="text-label">PHONE NUMBER</span>
+            <div class="right-inner-addon">
+              <input type="text" class="form-control" name="lastname" ng-model="customerDetails.billing_address.last_name" required>
+              <div ng-show="form.$submitted || shippingForm.lastname.$touched">
+                <i class="glyphicon glyphicon-ok" ng-show="shippingForm.lastname.$valid"></i>
+                <i class="glyphicon glyphicon-remove" ng-show="!shippingForm.lastname.$valid"></i>
+                <span class="error-message" ng-show="shippingForm.lastname.$error.required">Last Name is required.</span>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="tab middle">    
+    <h5>Shipping Details</h5> 
+    <div class="inner-wrapper inner-content">
+      <p align="justify">You haven't had any shipping details yet, please add one by clicking button below.</p>
+      <small><a ui-sref="addAddress" class="btn btn-default">ADD ADDRESS</a></small>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+    <div class="inner-wrapper">
+        <a ui-sref="checkout" class="btn btn-default pull-left" style="width: 45%">BACK</a>
+        <a ui-sref="paymentDetails" class="btn btn-primary pull-right" style="width: 45%">NEXT</a>
+    </div>
+</div>

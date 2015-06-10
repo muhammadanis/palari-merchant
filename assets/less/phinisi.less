@@ -27,9 +27,8 @@ body {
   flex-direction: row;
 }
 
-.nopadding {
+.no-padding {
    padding: 0 !important;
-   margin: 0 !important;
 }
 
 .form-control {
@@ -73,6 +72,9 @@ body {
     padding: 10px 12px;
     pointer-events: none;
 }
+.border-left {
+  border-left: 1px solid #CCCCCC;
+}
 
 /* Section */
 .header-section {
@@ -109,6 +111,14 @@ body {
 }*/
 
 /* Label */
+.text-label {
+  display: block;
+  font-size: 1em;
+}
+.big-text-label {
+  display: block;
+  font-size: 2em;
+}
 .small-text-label {
   display: block;
   color: @dark-gray;
@@ -170,6 +180,10 @@ body {
 }
 
 /* Wrapper */
+.body-wrapper {
+  padding: 5px;
+  overflow: auto;
+}
 .wrapper {
   border: 1px solid @light-gray;
   margin-bottom: 8px;
@@ -178,7 +192,7 @@ body {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 .inner-wrapper {
-  padding: 10px;
+  padding: 10px 15px;
 }
 .inner-wrapper:before,
 .inner-wrapper:after {
@@ -192,19 +206,23 @@ body {
 .inner-wrapper:after {
   clear: both;
 }
+.inner-content {
+  background-color: @very-light-gray;
+}
 .tab {
   margin-bottom: -1px;
 }
 .tab > h5 {
   padding: 10px 10px;
-  border-top: 1px solid @light-gray;
   border-bottom: 1px solid @light-gray;
   background-color: @white;
   color: @very-dark-gray;
   margin: 0;
   text-transform: uppercase;
-  cursor: pointer;
   font-weight: bold;
+}
+.tab.middle > h5 {
+  border-top: 1px solid @light-gray;
 }
 .tab > h3 {
   padding: 15px 10px;
@@ -217,6 +235,12 @@ body {
   cursor: pointer;
   font-weight: bold; 
   text-align: center;
+}
+.dark-gray-wrapper{
+  background: @light-gray;
+  margin: 20px 10px 10px 10px;
+  padding: 5px 20px;
+  overflow: auto;
 }
 .payment-options,
 .shipping-information {
@@ -249,45 +273,9 @@ body {
 }
 
 /* Button Style */
-.btn-pay {
-  text-transform: uppercase;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 12px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-}
-.btn-show-details {
-  color: @very-dark-gray;
-  background-color: @very-light-gray;
-  border-color: @light-gray;
+.btn {
   border-radius: 0;
-  padding: 5px 15px;
-  font-size: 12px;
-  line-height: 1.5;
-}
-.btn-show-details:hover {
-  color: @very-dark-gray;
-  background-color: #DDDDDD;
-}
-.btn-hide-details,
-.btn-hide-details:focus {
-  color: @white;
-  background-color: @very-dark-gray;
-  border-color: @light-gray;
-  border-radius: 0;
-  padding: 5px 15px;
-}
-.btn-hide-details:hover {
-  color: @white;
-  background-color: #747474;
+  font-size: 1.2em;
 }
 
 /* Images */
@@ -386,6 +374,21 @@ input.ng-valid.ng-touched:focus {
 .glyphicon-remove {
   color: #a94442;
   z-index: 999;
+}
+
+/* Dropdown Select */
+select {
+   background: @white;
+   width: 100%;
+   padding: 5px 10px;
+   font-size: 14px;
+   line-height: 1;
+   border: 1px solid #CCCCCC;
+   border-radius: 0;
+   height: 34px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+   -webkit-appearance: none;
 }
 
 /* Radio Button */

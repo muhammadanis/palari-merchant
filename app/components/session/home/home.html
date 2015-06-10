@@ -12,7 +12,7 @@
 </div> -->
 
 <!-- Details Set -->
-<div class="content">
+<div class="content" ng-init="getDetails()">
 	<div class="inner-content">
 		<span class="subtitle">Store Details</span>
 		<a ui-sref="merchant.editDetails" class="link-blue pull-right">edit details <i class="fa fa-arrow-right"></i></a>
@@ -33,16 +33,16 @@
 	<div class="inner-content">
 		<div class="details-group">
 			<span class="text-label"><strong>Store Name</strong></span>
-			<span class="text-label">Blitzmegaplex</span>
+			<span class="text-label">{{ storeDetails.merchant_details.merchant_name }}</span>
 		</div>
 		<div class="details-group">
 			<span class="text-label"><strong>Phone Number</strong></span>
-			<span class="text-label">081234567890</span>
+			<span class="text-label">{{ storeDetails.merchant_address.phone_number }}</span>
 		</div>
 		<div class="details-group">
 			<span class="text-label"><strong>Store Address</strong></span>
-			<span class="text-label">Jalan Ciumbuleuit, Hegarmanah Cidadap</span>
-			<span class="text-label">Bandung, Jawa Barat</span>
+			<span class="text-label">{{ storeDetails.merchant_address.address }}</span>
+			<span class="text-label"></span>
 		</div>
 	</div>
 	<hr class="ng-hide"/>

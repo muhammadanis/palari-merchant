@@ -4,7 +4,9 @@ var decimalRegex = /^(?:\d*\.)?\d+$/;
 var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 var emailRegex = /^[\w._%+-]+@[a-zA-Z_]+?(\.[a-zA-Z]{2,4}){1,2}$/;
 
-phinisiApp.directive('validationType', function() {
+var formApp = angular.module('formApp', []);
+
+formApp.directive('validationType', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {

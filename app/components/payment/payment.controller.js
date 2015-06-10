@@ -1,6 +1,3 @@
-var paymentApp = angular.module("paymentApp", ['ngAnimate', 'angularPayments']);
-
-
 paymentApp.config(function($sceDelegateProvider, $httpProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
@@ -28,17 +25,15 @@ paymentApp.value('PaymentTypes', [{
     payment_type: "credit_card",
     image_class: "fa fa-lg fa-credit-card"
   }, {
-    display_name: "Virtual Account",
+    display_name: "Bank Transfer",
     payment_type: "permata",
     image_class: "fa fa-lg fa-diamond"
   }, {
-    display_name: "BBM Pay",
-    payment_type: "bbm_pay",
+    display_name: "BBM Money",
+    payment_type: "bbm_money",
     image_class: "bbm-logo"
   }]
 );
-
-
 
 //Service
 paymentApp.service('CreditCardService', function(){
@@ -79,61 +74,31 @@ paymentApp.service('CreditCardService', function(){
 
 });
 
-paymentApp.controller("buttonController", function($scope){
-  $scope.buttonDetails = 'SHOW DETAILS';
-  $scope.buttonActive = false;
-  $scope.button2Active = false;
-  $scope.button3Active = false;
+paymentApp.controller('paymentController', ['$scope', '$http', '$log', '$state', 'PaymentTypes', function($scope, $http, $log, $state, PaymentTypes){
+  $scope.payments = PaymentTypes;
+  $scope.paymentType = "default"; 
 
-  $scope.buttonClicked = function () {
-    if ($scope.buttonActive == false){
-      $scope.buttonActive = !($scope.buttonActive);
-      $scope.buttonDetails = 'HIDE DETAILS';
-    } else {
-      $scope.buttonActive = !($scope.buttonActive);
-      $scope.buttonDetails = 'SHOW DETAILS';
+  $scope.go = function (paymentType) {
+    console.log('go');
+    if (paymentType === 'credit_card') {
+      $state.transitionTo('paymentDetails.creditCard', {arg : 'arg'});
     }
-  }
-
-  $scope.button2Clicked = function () {
-    if ($scope.button2Active == false){
-      $scope.button2Active = !($scope.button2Active);
-    } else {
-      $scope.button2Active = !($scope.button2Active);
+    else if (paymentType === 'permata'){
+      $state.transitionTo('paymentDetails.bankTransfer', {arg : 'arg'});
     }
-  }
-
-  $scope.button3Clicked = function () {
-    if ($scope.button3Active == false){
-      $scope.button3Active = !($scope.button3Active);
-    } else {
-      $scope.button3Active = !($scope.button3Active);
+    else if (paymentType === 'paymentDetails.bbmMoney'){
+      $state.transitionTo('paymentType', {arg : 'arg'});
     }
-  }
+    else {
 
-});
-
-paymentApp.controller('DropdownCtrl', function ($scope, $log) {
-  $scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
-
-  $scope.status = {
-    isopen: false
+    }
+    
   };
 
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
-});
+
+
+}]);
 
 paymentApp.controller("submitController", function($scope, $http, CreditCardService, PaymentTypes){
   $scope.card_exp_date = '12 / 2016';
@@ -172,8 +137,6 @@ paymentApp.controller("submitController", function($scope, $http, CreditCardServ
     }
   };
 
-  $scope.payments = PaymentTypes;
-  
   $scope.paymentType = "default";
 
   $scope.bankType = '';
@@ -523,45 +486,6 @@ paymentApp.directive('paymentsVal', function(CreditCardService){
   }  
 });
 
-// paymentApp.directive('ccLogo', function(){
-//   return{
-//     restrict: 'A',
-//     link: function ($scope, element, attrs){
-//       $scope.$watch($scope.creditCard.card_number, function(val){
-//         var cardType = CreditCardService.numberValidation(val).cardType;
-//         var valid = CreditCardService.numberValidation(val).valid;
-//         if (valid === 'valid'){
-//           if (cardType === 'Visa'){
-//             $scope.status = 'visa';
-//           } else if (cardType === 'MasterCard'){
-//             $scope.status = 'mastercard';
-//           }
-//         } else if (valid === 'not valid' && val.length == 16){
-//           $scope.status = 'invalid';
-//         }
-
-//       });
-//     }
-//   }
-// });
-
-// paymentApp.directive('autoCcFormat', function())
-
-
-paymentApp.filter('mycurrency', function(){
-  return function(number){
-    var rev     = parseInt(number, 10).toString().split('').reverse().join('');
-    var rev2    = '';
-    for(var i = 0; i < rev.length; i++){
-        rev2  += rev[i];
-        if((i + 1) % 3 === 0 && i !== (rev.length - 1)){
-            rev2 += '.';
-        }
-    }
-    return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
-  };
-});
-
 angular.module('myApp', ['filters']);
 
 angular.module('filters', []).  
@@ -595,63 +519,3 @@ filter('validate', [function () {
       return ccnumber + " is a(n) " + cardType + " and it's " + valid;
     };
 }]);
-
-
-
-paymentApp.controller("dropdownDemo", function($scope) {
-
-});
-
-paymentApp.run(function($rootScope) {
-  angular.element(document).on("click", function(e) {
-    $rootScope.$broadcast("documentClicked", angular.element(e.target));
-  });
-});
-
-paymentApp.directive("dropdown", function($rootScope) {
-  return {
-    restrict: "E",
-    templateUrl: "app/shared/dropdown/dropdown.html",
-    scope: {
-      placeholder: "@",
-      list: "=",
-      selected: "=",
-      property: "@"
-    },
-    link: function(scope) {
-      scope.listVisible = false;
-      scope.isPlaceholder = true;
-
-      scope.select = function(item) {
-        scope.isPlaceholder = false;
-        scope.selected = item;
-        scope.listVisible = false;
-      };
-
-      scope.isSelected = function(item) {
-        return item[scope.property] === scope.selected[scope.property];
-      };
-
-      scope.show = function() {
-        scope.listVisible = true;
-      };
-
-      // $rootScope.$on("documentClicked", function(inner, target) {
-      //   console.log($(target[0]).is(".dropdown-display.clicked") || $(target[0]).parents(".dropdown-display.clicked").length > 0);
-      //   if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
-      //     scope.$apply(function() {
-      //       scope.listVisible = false;
-      //     });
-      // });
-
-      // scope.$watch("listVisible", function(value){
-      //   console.log("list Visible:" + scope.listVisible);
-      // });
-
-      scope.$watch("selected", function(value) {
-        scope.isPlaceholder = scope.selected[scope.property] === undefined;
-        scope.display = scope.selected;
-      });
-    }
-  }
-});
