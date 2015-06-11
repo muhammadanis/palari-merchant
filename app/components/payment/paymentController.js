@@ -660,7 +660,6 @@ paymentApp.controller("productController", function($scope){
   $scope.productDetails = {};
   $scope.deliveryFee = '',
   $scope.productId = '',
-  $scope.merchantId = '',
   $scope.totalAmount = function(){
     return $scope.price + $scope.deliveryFee;
   }
@@ -672,7 +671,7 @@ paymentApp.controller("productController", function($scope){
     
     $http.get(
         //url
-        phinisiEndpoint + '/customer/product/list/' + $scope.merchantId + '/' + $scope.productId,
+        phinisiEndpoint + '/customer/product/' + $scope.productId,
         //config
         {
           headers :{ 'Content-Type': 'application/json','Accept': 'application/json'} ,       
