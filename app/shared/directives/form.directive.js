@@ -2,6 +2,7 @@ var integerRegex = /^\d+$/;
 var phoneNumberRegex = /^[0-9]{5,12}$/;
 var decimalRegex = /^(?:\d*\.)?\d+$/;
 var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+var emailRegex = /^[\w._%+-]+@[a-zA-Z_]+?(\.[a-zA-Z]{2,4}){1,2}$/;
 
 phinisiApp.directive('validationType', function() {
   return {
@@ -60,6 +61,21 @@ phinisiApp.directive('validationType', function() {
           }
 
           if (passwordRegex.test(viewValue)) {
+            // it is valid
+            return true; 
+          }
+          // it is invalid
+          return false;
+        }        
+      }
+      else if (attrs.validationType == 'email'){
+        ctrl.$validators.email = function(modelValue, viewValue) {
+          if (ctrl.$isEmpty(modelValue)) {
+            // consider empty models to be valid
+            return true;
+          }
+
+          if (emailRegex.test(viewValue)) {
             // it is valid
             return true; 
           }
