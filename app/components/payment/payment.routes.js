@@ -32,6 +32,7 @@ paymentApp.config(function($stateProvider, $urlRouterProvider, $locationProvider
 			templateUrl: 'app/components/payment/payment-type/bbm-money.html'
 		})	
 		.state('paymentFinish', {
+			url: '/payment-finish',
 			templateUrl: 'app/components/payment/payment-finish.html'
 		})
 		.state('loading', {

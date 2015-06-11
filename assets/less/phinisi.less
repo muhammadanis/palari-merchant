@@ -8,31 +8,39 @@
 @very-dark-gray   : #636363;
 @black            : #000000;
 
+font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/proximanova-regular-webfont.ttf');
+}
+
 body {
   background: @white;
-  padding-top: 20px;
+  padding-top: 5px;
+  font-family: "Proxima Nova";
+  color: @very-dark-gray;
 }
 
 /* Customize Style */
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
 .vertical-align {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
-
 .no-padding {
-   padding: 0 !important;
+  padding: 0 !important;
 }
-
+.no-margin {
+  margin: 0 !important;
+}
 .form-control {
   border-radius: 0px;
+}
+.border-left {
+  border-left: 1px solid #CCCCCC;
+}
+.auto-overflow {
+  overflow: auto;
 }
 
 /* enable absolute positioning */
@@ -72,111 +80,28 @@ body {
     padding: 10px 12px;
     pointer-events: none;
 }
-.border-left {
-  border-left: 1px solid #CCCCCC;
-}
 
 /* Section */
-.header-section {
+header {
   text-align: center;
 }
-.purchased-product-section {
-  background-color: @very-dark-gray;
-  margin: 0 -1px;
-  padding: 0 1px;
-  color: @very-light-gray;
-  font-size: 12px;
-}
-.credit-card-section {
-  background-color: @very-light-gray;
-  padding: 10px;
-  border-top: 1px solid @light-gray;
-}
-.virtual-account-section {
-  background-color: @very-light-gray;
-  padding: 10px;
-  border-top: 1px solid @light-gray;
-}
-.payment-method {
-  background-color: @very-light-gray;
-  padding: 5px 10px;
-}
-/*.product-details {
-  background-color: @white;
-  padding: 5px 10px;
-}*/
-/*.shipping-details {
-  background-color: @very-light-gray;
-  padding: 5px 10px; 
-}*/
 
 /* Label */
 .text-label {
   display: block;
   font-size: 1em;
 }
-.big-text-label {
-  display: block;
+.text-label.big {
   font-size: 2em;
 }
-.small-text-label {
-  display: block;
-  color: @dark-gray;
-  font-size: 12px;
-  padding: 5px 0;
-  text-align: left;
-}
-.3d-secure-label {
-  display: block;
-  width: 20%;
-  font-size: 16px;
-}
-.total-amount-label {
-  font-size: 24px;
-  color: @very-dark-gray;
-}
-.shipping-label-h1 {
-  display: block;
-  color: @very-dark-gray;
-  font-size: 20px;
-  padding-left: 10px;
-}
-.shipping-label-h2 {
-  display: block;
-  color: @very-dark-gray;
-  font-size: 14px;
-  padding-left: 10px;
-}
-.title {
-  display: block;
-  color: @very-dark-gray;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
+.text-label.medium {
+  font-size: 1.5em;
 }
 
 /* Purchased Products */
-.item {
-  padding: 10px 0;
-}
-.item-name,
-.quantity,
-.price {
-  display: block;
-}
-.item-name {
-  font-size: 18px;
-  text-transform: uppercase;
-}
 .item-image {
   width: 100%;
   height: auto;
-}
-.price {
-  text-align: left;
-}
-.price.total {
-  font-size: 16px;
 }
 
 /* Wrapper */
@@ -191,8 +116,26 @@ body {
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
+.inner-content {
+  background-color: @very-light-gray;
+}
+.hidden-content {
+  background-color: @very-dark-gray;
+  margin: 0 -1px;
+  padding: 0 1px;
+  color: @very-light-gray;
+}
+.dark-gray-wrapper{
+  background: @light-gray;
+  margin: 20px 10px 10px 10px;
+  padding: 5px 20px;
+  overflow: auto;
+}
 .inner-wrapper {
   padding: 10px 15px;
+}
+.inner-wrapper.middle {
+  border-top: 1px solid @light-gray;
 }
 .inner-wrapper:before,
 .inner-wrapper:after {
@@ -205,9 +148,6 @@ body {
 }
 .inner-wrapper:after {
   clear: both;
-}
-.inner-content {
-  background-color: @very-light-gray;
 }
 .tab {
   margin-bottom: -1px;
@@ -236,36 +176,16 @@ body {
   font-weight: bold; 
   text-align: center;
 }
-.dark-gray-wrapper{
-  background: @light-gray;
-  margin: 20px 10px 10px 10px;
-  padding: 5px 20px;
-  overflow: auto;
-}
 .payment-options,
 .shipping-information {
   background-color: @very-light-gray;
   border-bottom: 1px solid @light-gray;
-}
-.spacing-form {
-  margin-bottom: 10px;
 }
 .payment-options .row {
   margin-bottom: 10px;
 }
 
 /* Lines (Horizontal and Vertical) */
-.hr-product {
-  color: @very-light-gray;
-  margin: 0;
-  display: block;
-}
-.hr-black {
-  color: @black;
-  margin: 0;
-  display: block;
-  border-top: 1px solid @very-dark-gray;
-}
 .verticalLine {
     padding-left: 10px;
     border-left: 2px solid @very-light-gray;
@@ -398,15 +318,6 @@ input[type="radio"] {
 input[type="radio"] + label span {
      border: 1px solid @light-gray;
 }
-input[type="radio"]:checked + label span.bank-bni{
-     border: 2px solid #005E6A;
-}
-input[type="radio"]:checked + label span.bank-mandiri{
-     border: 2px solid #1B4A7F;
-}
-input[type="radio"]:checked + label span.bank-cimbniaga{
-     border: 2px solid #EB3232;
-}
 input[type="radio"] + label span,
 input[type="radio"]:checked + label span {
   cursor: pointer;
@@ -472,6 +383,7 @@ label.css-label {
   background: url(../img/card-default.png);
 }
 .bank-logo {
+  border: 1px solid @light-gray;
   display: inline-block;
   width: 120px;
   height: 40px;
@@ -484,6 +396,23 @@ label.css-label {
 }
 .bank-cimbniaga {
   background: url(../img/cimb_niaga_logo.png);
+}
+.shipping-logo {
+  display: inline-block;
+  width: 120px;
+  height: 75px;
+}
+.jne {
+  background: url(../img/jne_logo.png) no-repeat;
+  background-size: 120px 75px;
+}
+.tiki {
+  background: url(../img/tiki_logo.png) no-repeat;
+  background-size: 120px 75px;
+}
+.posindo {
+  background: url(../img/posindo_logo.png) no-repeat;
+  background-size: 120px 75px;
 }
 .bbm-logo {
   background: url(../img/bbm_logo.png) no-repeat;
