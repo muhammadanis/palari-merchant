@@ -6,17 +6,19 @@ dropdownApp.run(function($rootScope) {
   });
 });
 
-dropdownApp.directive("dropdown", function($rootScope) {
+dropdownApp.directive("dropdown", function($rootScope, $timeout) {
   return {
     restrict: "E",
     templateUrl: "../app/shared/dropdown/dropdown.html",
+    require: '^ngModel',
     scope: {
       placeholder: "@",
       list: "=",
       selected: "=",
-      property: "@"
+      property: "@",
+      ngChange: '&'
     },
-    link: function(scope) {
+    link: function(scope, element, attrs) {
       scope.listVisible = false;
       scope.isPlaceholder = true;
 
@@ -24,6 +26,8 @@ dropdownApp.directive("dropdown", function($rootScope) {
         scope.isPlaceholder = false;
         scope.selected = item;
         scope.listVisible = false;
+        scope.ngModel = item;
+        $timeout(scope.ngChange, 0);
       };
 
       scope.isSelected = function(item) {
