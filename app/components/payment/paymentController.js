@@ -655,3 +655,36 @@ paymentApp.directive("dropdown", function($rootScope) {
     }
   }
 });
+
+paymentApp.controller("productController", function($scope){
+  $scope.productDetails = {};
+  $scope.deliveryFee = '',
+  $scope.productId = '',
+  $scope.merchantId = '',
+  $scope.totalAmount = function(){
+    return $scope.price + $scope.deliveryFee;
+  }
+
+  $scope.getProductDetails = function(){
+    $log.debug($scope.merchantId);
+    $log.debug($scope.deliveryFee);
+    $log.debug($scope.totalAmount());
+    
+    $http.get(
+        //url
+        phinisiEndpoint + '/customer/product/list/' + $scope.merchantId + '/' + $scope.productId,
+        //config
+        {
+          headers :{ 'Content-Type': 'application/json','Accept': 'application/json'} ,       
+        }
+      )
+      .success(function(data){
+        $scope.productDetails = data; 
+        $log.debug($scope.productDetails);
+        $log.debug("Get product details success");
+      })
+      .error(function(data){
+        $scope.error = data.description;        
+      });
+  }
+});

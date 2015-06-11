@@ -1,8 +1,9 @@
 <div class="content">
 	<div class="inner-content">
 		<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6 subtitle"><strong>Transaction Details</strong></span>
-		<a ui-sref="col-xs-6 col-sm-6 col-md-6 col-lg-6 merchant.transaction" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Back</a>
+		<a ui-sref="merchant.transaction" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 link-blue text-right" ng-disabled="confirm || cancel"><i class="fa fa-arrow-left"></i> Back</a>
 	</div>
+	<br/>
 	<br/>
 	<div class="inner-content">
 		<div class="center-block auto-overflow">
@@ -52,10 +53,10 @@
 
 	<div class="row">
 		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-			<button class="btn-light-gray btn-primary" ng-click="cancleToggle()">CANCEL ORDER</button>
+			<button class="btn-light-gray btn-primary" ng-click="cancleToggle()" ng-disabled="confirm || cancel">CANCEL ORDER</button>
 		</p>
 		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-			<button class="btn-blue btn-primary" ng-click="confirmToggle()">CONFIRM DELIVERY</button>
+			<button class="btn-blue btn-primary" ng-click="confirmToggle()" ng-disabled="confirm || cancel">CONFIRM DELIVERY</button>
 		</p>
 	</div>
 	

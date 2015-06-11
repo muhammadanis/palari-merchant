@@ -1,4 +1,4 @@
-phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$stateParams' , function($scope, $http, $log, $window, $stateParams){
+phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$state', '$stateParams' , function($scope, $http, $log, $window, $state, $stateParams){
 	$scope.productDetails = {
 		name: 'product1',
 		description: 'description',
@@ -64,8 +64,9 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 			})
 		.success(function(data,status,headers,config){
 			$log.debug(data);
-			if(data.success){
+			if(data.hasOwnProperty('id')){
 				$log.debug("success save product");
+				$state.transitionTo('merchant.product', {arg : 'arg'});	
 			}else{
 				$scope.error = data.description;
 			}				
