@@ -1,28 +1,55 @@
-<div class="alert alert-danger" ng-show="error">
-	{{error}}
-</div>
-<div class="login-wrapper absolute-center">
+<div class="inner-content absolute-center">
 	<div class="center-block text-center">
 		<i class="logo-gray"></i>
 	</div>
 	<div class="center-block text-center">
-		<span class="title text-center">Register New Account</span>
+		<h3>Register New Account</h3>
 	</div>
-	<form role="form" ng-submit="register()">
-		<div class="form-group">
-			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" ng-model="regModel.username">
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" name="password" ng-model="regModel.password">
+	<form role="form" name="registerForm" ng-submit="register()" style="margin-top: 30px;">
+		<div class="error-box" ng-show="error">
+			<span class="error-message">{{ error }}</span>
 		</div>
 
-		<span class="text-label">By clicking sign up button, you agree to our user's privacy <a ui-sref="register" class="link-orange">terms and agreements.</a></span>
+		<div class="form-group">
+			<div class="right-inner-addon">
+				<input type="text" class="form-underline form-register" name="email" placeholder="Email Address" ng-model="regModel.username" validation-type="email" required />
+	            <div ng-show="registerForm.$submitted || registerForm.email.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="registerForm.email.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!registerForm.email.$valid"></i>
+	              <span class="error-message" ng-show="registerForm.email.$error.required">Email address is required.</span>
+	              <span class="error-message" ng-show="registerForm.email.$error.email">Email address is invalid.</span>
+	            </div>
+          	</div>
+		</div>
+		<div class="form-group">
+			<div class="right-inner-addon">
+				<input type="password" class="form-underline form-register" name="password" placeholder="Password" ng-model="regModel.password" required />
+			    <div ng-show="registerForm.$submitted || registerForm.password.$touched">
+	              	<i class="glyphicon glyphicon-ok" ng-show="registerForm.password.$valid"></i>
+	              	<i class="glyphicon glyphicon-remove" ng-show="!registerForm.password.$valid"></i>
+	              	<span class="error-message" ng-show="registerForm.password.$error.required">Password is required.</span>
+	              	<!-- <span class="error-message" ng-show="registerForm.password.$error.password">Password must be at least one uppercase, one lowercase, a number and 8 characters long.</span> -->
+	            </div>
+          	</div>
+		</div>
+		<div class="form-group">
+			<div class="right-inner-addon">
+				<input type="password" class="form-underline form-register" name="confirmPassword" placeholder="Confirm Password" ng-model="regModel.confirmPassword" required />
+			    <div ng-show="registerForm.$submitted || registerForm.password.$touched">
+	              	<i class="glyphicon glyphicon-ok" ng-show="registerForm.confirmPassword.$valid && (regModel.confirmPassword === regModel.password)"></i>
+	              	<i class="glyphicon glyphicon-remove" ng-show="!registerForm.confirmPassword.$valid || (regModel.confirmPassword !== regModel.password)"></i>
+	              	<span class="error-message" ng-show="regModel.confirmPassword !== regModel.password">Password didn't match.</span>
+	            </div>
+          	</div>
+		</div>
+
+		<p>By clicking sign up button, you agree to our user's privacy <a ui-sref="register" class="link-orange">terms and agreements</a>.</p>
 		
-		<button type="submit" class="btn-primary" style="width: 100%; margin:10px 0px;">SIGN UP</button>
+		<button type="submit" class="btn-primary" style="width: 100%; margin:10px 0px;"><strong>SIGN UP</strong></button>
 
-		<span class="text-label">Already have an account? <a ui-sref="login" class="link-orange">Sign In</a></span>
+		<div class="text-center">
+			<p>Already have an account? <a ui-sref="login" class="link-orange">Sign In</a></p>
+		</div>
 	</form>
 
 </div>
