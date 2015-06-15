@@ -36,17 +36,13 @@
 				<th>Order ID</th>
 				<th>Date & Time</th>
 				<th>Buyer's Name</th>
-				<th>Item Details</th>
 			</tr>
 			<tr ng-repeat="transaction in transactions">
 				<td> 
-					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.transaction_id}}'})" class="link-orange"><u>{{$index}} {{transaction.order_id}}</u></a>
+					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.transaction_id}}'})" class="link-orange"><u>{{transaction.transaction_id}}</u></a>
 				</td>
-				<td>{{transaction.date_time}}</td>
+				<td>{{transaction.transaction_date}}</td>
 				<td>{{transaction.buyer_name}}</td>
-				<td> 
-					<a ui-sref="merchant.productDetails({productId: '{{transaction.product_id}}'})">{{transaction.product.product_name}}</a> 
-				</td>
 			</tr>
 		</table>
 	</div>
