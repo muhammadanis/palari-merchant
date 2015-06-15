@@ -1,4 +1,4 @@
-phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log', 
+phinisiApp.controller('homeController', ['$scope', '$http', '$window', '$log', 
 	function($scope, $http, $window, $log){
 		$scope.storeDetails = {
 			merchant_details: {
@@ -47,9 +47,35 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 			};
 
 		$scope.getDetails = function(){
-
+			$http.post(
+				//url
+				phinisiEndpoint + '/merchant/info',
+				//data
+				{
+				},
+				//config
+				{
+					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+				})
+			.success(function(data,status,headers,config){
+				if(data.success){
+					if(data.success){
+						$log.debug('Get info success!');
+						$scope.storeDetails.merchant_details.merchant_name = data.merchant_name;
+						$scope.storeDetails.merchant_details.merchant_logo_url = data.merchant_url;
+						$scope.storeDetails.merchant_address.address = data.merchant_address;
+						$scope.storeDetails.merchant_address.phone_number = data.merchant_phone;
+					}else{
+						$scope.error = data.description;						
+					}
+				}
+				$log.debug(data);			
+			})
+			.error(function(data,status,headers,config){
+				$log.debug(data);
+				$scope.error = data.error;				
+			});
 		};
 
-		$scope.getDetails();
 
-	}]);
+}]);

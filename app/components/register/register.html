@@ -12,7 +12,7 @@
 
 		<div class="form-group">
 			<div class="right-inner-addon">
-				<input type="text" class="form-underline form-register" name="email" placeholder="Email Address" ng-model="regModel.username" validation-type="email" required />
+				<input type="text" class="form-underline form-register" name="email" placeholder="Email Address" ng-model="regModel.username" ng-model-options="{ updateOn: 'blur' }" validation-type="email" required />
 	            <div ng-show="registerForm.$submitted || registerForm.email.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="registerForm.email.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!registerForm.email.$valid"></i>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group">
 			<div class="right-inner-addon">
-				<input type="password" class="form-underline form-register" name="password" placeholder="Password" ng-model="regModel.password" required />
+				<input type="password" class="form-underline form-register" name="password" placeholder="Password" ng-model="regModel.password" ng-model-options="{ updateOn: 'blur' }" required />
 			    <div ng-show="registerForm.$submitted || registerForm.password.$touched">
 	              	<i class="glyphicon glyphicon-ok" ng-show="registerForm.password.$valid"></i>
 	              	<i class="glyphicon glyphicon-remove" ng-show="!registerForm.password.$valid"></i>
@@ -34,8 +34,8 @@
 		</div>
 		<div class="form-group">
 			<div class="right-inner-addon">
-				<input type="password" class="form-underline form-register" name="confirmPassword" placeholder="Confirm Password" ng-model="regModel.confirmPassword" required />
-			    <div ng-show="registerForm.$submitted || registerForm.password.$touched">
+				<input type="password" class="form-underline form-register" name="confirmPassword" placeholder="Confirm Password" ng-model="regModel.confirmPassword" ng-model-options="{ updateOn: 'blur' }"  ng-class="{'ng-invalid': regModel.confirmPassword !== regModel.password }" required />
+			    <div ng-show="registerForm.$submitted || registerForm.confirmPassword.$touched">
 	              	<i class="glyphicon glyphicon-ok" ng-show="registerForm.confirmPassword.$valid && (regModel.confirmPassword === regModel.password)"></i>
 	              	<i class="glyphicon glyphicon-remove" ng-show="!registerForm.confirmPassword.$valid || (regModel.confirmPassword !== regModel.password)"></i>
 	              	<span class="error-message" ng-show="regModel.confirmPassword !== regModel.password">Password didn't match.</span>

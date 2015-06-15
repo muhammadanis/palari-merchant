@@ -1,4 +1,6 @@
-phinisiApp.filter('mycurrency', function(){
+var filterApp = angular.module('filterApp', []);
+
+filterApp.filter('mycurrency', function(){
   return function(number){
     var rev     = parseInt(number, 10).toString().split('').reverse().join('');
     var rev2    = '';
@@ -8,6 +10,6 @@ phinisiApp.filter('mycurrency', function(){
             rev2 += '.';
         }
     }
-    return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+    return 'Rp. ' + rev2.split('').reverse().join('');
   };
 });

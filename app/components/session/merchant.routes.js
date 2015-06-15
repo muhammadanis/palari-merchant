@@ -10,13 +10,14 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
 
     .state('merchant.home', {
     	url: '/home',
-    	templateUrl: 'app/components/session/home/home.html'
+    	templateUrl: 'app/components/session/home/home.html',
+      controller: 'homeController'
     })
 
     .state('merchant.editDetails', {
       url: '/edit-details',
       templateUrl: 'app/components/session/home/edit-details.html',
-      controller: 'detailsController'
+      controller: 'homeController'
     })
 
     .state('merchant.product', {
