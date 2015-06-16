@@ -38,6 +38,7 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 		$scope.confirm = false;
 		$scope.cancel = false;
 		$scope.trackingId = null;
+		$scope.trackingDone = false;
 
 		$scope.getTransactionDetails = function(){
 			$http.post(
@@ -76,6 +77,16 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 			else{
 				$scope.shipping = false;
 			}
+			if(data.hasOwnProperty('transaction_tracking_id')){
+				$scope.trackingDone = true;
+			}
+			else{
+				$scope.trackingDone = false;
+			}
+
+		};
+		$scope.paymentStatus = function(){
+			return ($scope.transaction.transaction_status === 'capture' || $scope.transaction.transaction_status === 'settlement');
 		};
 
 		$scope.totalAmount = function(){
@@ -113,7 +124,7 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 					if(data.hasOwnProperty('tracking_id')){
 						$log.debug(data);
 						$log.debug('Set tracking id success!');
-						$state.transitionTo('merchant.transaction', {arg : 'arg'});	
+						location.reload();
 					}	
 					else{
 						$log.debug(data.description);
