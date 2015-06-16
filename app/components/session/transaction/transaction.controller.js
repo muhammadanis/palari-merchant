@@ -1,9 +1,7 @@
 sessionApp.controller('transactionController', ['$scope' , '$http' , '$log' , '$window' , '$state' ,'$stateParams' , 
 	function($scope, $http, $log, $window, $state, $stateParams){
-		$scope.transactionType = 0;
+		$scope.transactionType = '';
 		$scope.transactions = null;
-		$scope.confirm = false;
-		$scope.cancel = false;
 		$scope.getTransactionList = function(){
 			$http.post(
 				//url
@@ -30,44 +28,35 @@ sessionApp.controller('transactionController', ['$scope' , '$http' , '$log' , '$
 				$scope.error = data.error;				
 			});
 		};
-		$scope.confirmToggle = function(){
-			$scope.confirm = !$scope.confirm;
-		};
-		$scope.cancleToggle = function(){
-			$scope.cancel = !$scope.cancel;
-		};
-		$scope.confirmOrder = function(){
-			$scope.confirm = !$scope.confirm;
-			$state.transitionTo('merchant.transaction', {arg : 'arg'});	
-		};
-		$scope.cancelOrder = function(){
-			$scope.cancel = !$scope.cancel;
-			$state.transitionTo('merchant.transaction', {arg : 'arg'});
-		};
 }]);
 
 sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$log' , '$window' , '$state' ,'$stateParams' , 
 	function($scope, $http, $log, $window, $state, $stateParams){
-		$scope.shipping = false;
 		$scope.transactionId = $stateParams.transactionId;
+		$scope.shipping = false;
 		$scope.transaction = '';
+		$scope.confirm = false;
+		$scope.cancel = false;
+		$scope.trackingId = null;
+
 		$scope.getTransactionDetails = function(){
 			$http.post(
 				//url
 				phinisiEndpoint + '/merchant/transaction/detail',
 				//data
 				{
-					transaction_id : $scope.transactionId,
+					order_id : $scope.transactionId,
 				},
 				//config
 				{
 					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 				})
 			.success(function(data,status,headers,config){
-				if(data.hasOwnProperty('transaction_id')){
+				if(data.hasOwnProperty('order_id')){
 					$scope.transaction = data;
 					$log.debug('Get transactions details success!');
 					$log.debug($scope.transaction);
+					$scope.initShipping(data);
 				}	
 				else{
 					$scope.error = data.description;
@@ -77,6 +66,16 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 				$log.debug(data);
 				$scope.error = data.error;				
 			});
+
+		};
+
+		$scope.initShipping = function(data){
+			if(data.hasOwnProperty('shipping_address')){
+				$scope.shipping = true;
+			}
+			else{
+				$scope.shipping = false;
+			}
 		};
 
 		$scope.totalAmount = function(){
@@ -85,7 +84,54 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 				total += $scope.transaction.transaction_detail[i].item_price * $scope.transaction.transaction_detail[i].item_quantity;
 			}
 			return total;
-		}
+		};
+
+		$scope.confirmToggle = function(){
+			$scope.confirm = !$scope.confirm;
+		};
+
+		$scope.cancleToggle = function(){
+			$scope.cancel = !$scope.cancel;
+		};
+
+		$scope.confirmOrder = function(){
+			$scope.confirm = !$scope.confirm;
+			if($scope.shipping){
+				$http.post(
+					//url
+					phinisiEndpoint + '/merchant/transaction/tracking',
+					//data
+					{
+						order_id : $scope.transactionId,
+		  				tracking_id : $scope.trackingId, 
+		  				courier_type : "jne"					},
+					//config
+					{
+						headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+					})
+				.success(function(data,status,headers,config){
+					if(data.hasOwnProperty('tracking_id')){
+						$log.debug(data);
+						$log.debug('Set tracking id success!');
+						$state.transitionTo('merchant.transaction', {arg : 'arg'});	
+					}	
+					else{
+						$log.debug(data.description);
+						$scope.error = data.description;
+					}
+
+				})
+				.error(function(data,status,headers,config){
+					$log.debug(data);
+					$scope.error = data.error;	
+				});
+			}
+		};
+
+	$scope.cancelOrder = function(){
+		$scope.cancel = !$scope.cancel;
+		$state.transitionTo('merchant.transaction', {arg : 'arg'});
+	};
 }]);
 
 	

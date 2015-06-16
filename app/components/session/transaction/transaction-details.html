@@ -9,7 +9,7 @@
 		<div class="center-block auto-overflow">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<span class="text-label-center"><strong>Order ID</strong></span>
-				<span class="text-label-center">{{transaction.transaction_id}}</span>
+				<span class="text-label-center">{{transaction.order_id}}</span>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<span class="text-label-center"><strong>Amount</strong></span>
@@ -39,9 +39,8 @@
 				<tr><td>Product Name</td><td><a ui-sref="merchant.productDetails({productId: '{{detail.item_id}}'})">{{detail.item_name}}</a></td></tr>
 				<tr><td>Price</td><td>{{detail.item_price | mycurrency}}</td></tr>
 				<tr><td>Quantity</td><td>{{detail.item_quantity}}</td></tr>
-				<tr><td>Variation</td><td>Variation</td></tr>
+				<tr><td>Variation</td><td>{{detail.item_variation}}</td></tr>
 			</tbody>
-			<br/>
 		</table>
 	</div>
 	<div class="inner-content" ng-show="shipping">
@@ -49,14 +48,15 @@
 			<tr><th colspan="2">Shipping Information</th></tr>
 			<tr><td>Recipient's Name</td><td>Recipient's Name</td></tr>
 			<tr><td>Recipient's Phone</td><td>Recipient's Phone</td></tr>
-			<tr><td>Address</td><td>Address</td></tr>
-			<tr><td>Shipping Agency</td><td>Shipping Agency</td></tr>
+			<tr><td>Recipient's E-mail</td><td>{{transaction.transaction_customer_email}}</td></tr>
+			<tr><td>Address</td><td>{{transaction.shipping_address.address + ", " + transaction.shipping_address.city + ", " + transaction.shipping_address.postal_code}}</td></tr>
+			<tr><td>Shipping Agency</td><td>{{transaction.transaction_courier_name}}</td></tr>
 			<tr><td>Service Type</td><td>Service Type</td></tr>
 			<tr><td>Shipping Cost</td><td>Shipping Cost</td></tr>
 		</table>
 	</div>
 
-	<div class="row">
+	<div class="row" ng-show="!transaction.hasOwnProperty('transaction_tracking_id')">
 		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
 			<button class="btn-light-gray btn-primary" ng-click="cancleToggle()" ng-disabled="confirm || cancel">CANCEL ORDER</button>
 		</p>
@@ -64,7 +64,11 @@
 			<button class="btn-blue btn-primary" ng-click="confirmToggle()" ng-disabled="confirm || cancel">CONFIRM DELIVERY</button>
 		</p>
 	</div>
-	
+	<div class="row" ng-show="transaction.hasOwnProperty('transaction_tracking_id')">
+		<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+			<button class="btn-blue btn-primary" ui-sref="merchant.transaction">OK</button>
+		</p>
+	</div>
 	<div class="dialog-box absolute-center text-center" ng-show="confirm">
 		<span class="subtitle center-block" style="color: #FFFFFF"><strong>Confirm Delivery</strong></span>
 		<div ng-show="shipping">
