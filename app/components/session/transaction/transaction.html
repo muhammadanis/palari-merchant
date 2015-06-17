@@ -20,11 +20,11 @@
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
 			<div class="right-inner-addon">
 	      		<select ng-model="transactionType">
-	      			<option value=0>All Transaction</option>
-		  			<option value=1>Payment Complete</option>
-		  			<option value=2>Payment Pending</option>
-		  			<option value=3>Delivered</option>
-		  			<option value=4>Canceled</option>
+	      			<option value="">All Transaction</option>
+					<option value="capture">Capture</option>
+					<option value="pending">Pending</option>
+					<option value="settlement">Settlement</option>
+					<option value="cancel">Cancel</option>
 				</select>
 	      		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
 	  		</div>
@@ -35,18 +35,14 @@
 			<tr>
 				<th>Order ID</th>
 				<th>Date & Time</th>
-				<th>Buyer's Name</th>
-				<th>Item Details</th>
+				<th>Status</th>
 			</tr>
-			<tr ng-repeat="transaction in transactions">
+			<tr ng-repeat="transaction in transactions | filter : {order_id : searchTransaction} | filter : {transaction_status : transactionType}">
 				<td> 
-					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.transaction_id}}'})" class="link-orange"><u>{{$index}} {{transaction.order_id}}</u></a>
+					<a ui-sref="merchant.transactionDetails({transactionId: '{{transaction.order_id}}'})" class="link-orange"><u>{{transaction.order_id}}</u></a>
 				</td>
-				<td>{{transaction.date_time}}</td>
-				<td>{{transaction.buyer_name}}</td>
-				<td> 
-					<a ui-sref="merchant.productDetails({productId: '{{transaction.product_id}}'})">{{transaction.product.product_name}}</a> 
-				</td>
+				<td>{{transaction.transaction_date}}</td>
+				<td>{{transaction.transaction_status}}</td>
 			</tr>
 		</table>
 	</div>

@@ -13,10 +13,10 @@
     "karma-junit-reporter": "^0.2.2"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install && bower install zeroclipboard ng-clip -c",
 
     "prestart": "npm install",
-    "start": "http-server -a 192.168.168.82 -p 8001 -c-1",
+    "start": "http-server -a localhost -p 8001 -c-1",
 
     "pretest": "npm install",
     "test": "karma start karma.conf.js",

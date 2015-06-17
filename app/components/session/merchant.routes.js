@@ -64,7 +64,7 @@ routesApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', f
     .state('merchant.transactionDetails', {
       url: '/transaction-details/:transactionId',
       templateUrl: 'app/components/session/transaction/transaction-details.html',
-      controller: 'transactionController'
+      controller: 'transactionDetailsController'
     })
 
     .state('merchant.signout', {

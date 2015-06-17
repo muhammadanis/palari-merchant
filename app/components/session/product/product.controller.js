@@ -1,4 +1,4 @@
-phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$stateParams' , function($scope, $http, $log, $window, $stateParams){
+phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$state', '$stateParams' , function($scope, $http, $log, $window, $state, $stateParams){
 	$scope.productDetails = {
 		name: 'product1',
 		description: 'description',
@@ -12,7 +12,6 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 		merchant_id : '',
 		merchant_product: {}
 	};
-
 	$scope.getProductList = function(){
 		$log.debug($window.sessionStorage.token);
 		$http.post(
@@ -64,8 +63,9 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 			})
 		.success(function(data,status,headers,config){
 			$log.debug(data);
-			if(data.success){
+			if(data.hasOwnProperty('id')){
 				$log.debug("success save product");
+				$state.transitionTo('merchant.productDetails', {productId: data.id});
 			}else{
 				$scope.error = data.description;
 			}				
@@ -82,6 +82,10 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 	$scope.productDetails = {};
 	$scope.deletePopUp = false;
 	$scope.choosenProduct = $stateParams.productId;
+	$scope.paymentURL = 'http://128.199.71.156:2081/#/payment/';
+	$scope.getURL = function(){
+		return $scope.paymentURL + $scope.choosenProduct;
+	}
 	$scope.getProductDetails = function(){
 		$log.debug($scope.choosenProduct);
 		$http.post(
