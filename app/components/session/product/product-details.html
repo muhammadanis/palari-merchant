@@ -15,7 +15,8 @@
 				<a ui-sref="merchant.editProduct({productId: '{{choosenProduct}}'})" class="link-blue pull-left"><center><i class="fa fa-edit"></i> Edit</center></a>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a class="link-blue" clip-copy="getURL()"><center><i class="fa fa-copy"></i> Copy Link</center></a>
+				<a class="link-blue" clip-copy="getURL()" ng-click="urlToggle()"><center><i class="fa fa-copy"></i> Copy Link</center></a>
+				<input type="text" class="form-control" ng-model="productURL" ng-show="showURL">
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<a class="link-blue pull-right" ng-click="deleteToggle()"><center><i class="fa fa-trash"></i> Delete</center></a>		

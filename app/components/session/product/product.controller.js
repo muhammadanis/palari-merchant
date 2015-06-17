@@ -81,11 +81,15 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' , '$state' , '$stateParams' , function($scope, $http, $log, $state, $stateParams){
 	$scope.productDetails = {};
 	$scope.deletePopUp = false;
+	$scope.showURL = false;
 	$scope.choosenProduct = $stateParams.productId;
+	$scope.productURL = null;
 	$scope.paymentURL = 'http://128.199.71.156:2081/#/payment/';
+
 	$scope.getURL = function(){
 		return $scope.paymentURL + $scope.choosenProduct;
-	}
+	};
+
 	$scope.getProductDetails = function(){
 		$log.debug($scope.choosenProduct);
 		$http.post(
@@ -103,6 +107,7 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 			if(!data.hasOwnProperty('merchant_id')){
 				$scope.productDetails = data;
 				$log.debug("Get product details success");
+				$scope.productURL = $scope.getURL();
 			}
 			else{
 				$scope.error = data.success;
@@ -113,9 +118,15 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 			$scope.error = data.error;				
 		});
 	};
+
+	$scope.urlToggle = function(){
+		$scope.showURL =  !$scope.showURL;
+	}
+
 	$scope.deleteToggle = function(){
 		$scope.deletePopUp = !$scope.deletePopUp;
-	}
+	};
+
 	$scope.deleteProduct = function(){
 		$scope.deletePopUp = !$scope.deletePopUp;
 		$state.transitionTo('merchant.product', {arg : 'arg'});	
