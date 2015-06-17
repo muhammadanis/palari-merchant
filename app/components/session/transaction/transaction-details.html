@@ -58,7 +58,7 @@
 		</table>
 	</div>
 
-	<div class="row" ng-show="!trackingDone">
+	<div class="row" ng-show="!trackingDone && transaction.transaction_status != 'cancel' ">
 		<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
 			<button class="btn-light-gray btn-primary" ng-click="cancleToggle()" ng-disabled="confirm || cancel">CANCEL ORDER</button>
 		</p>
@@ -67,7 +67,7 @@
 		</p>
 	</div>
 
-	<div class="row" ng-show="trackingDone">
+	<div class="row" ng-show="trackingDone || transaction.transaction_status == 'cancel'">
 		<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 			<button ui-sref="merchant.transaction" class="btn-light-gray btn-primary">  OK  </button>
 		</p>
@@ -101,6 +101,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="dialog-box absolute-center text-center" ng-show="cancel">
 		<span class="subtitle center-block" style="color: #FFFFFF"><strong>Cancel Order</strong></span>
 		<span class="text-label" style="color: #FFFFFF">Are you sure you want to cancel the order?</span><br/>

@@ -73,16 +73,17 @@ sessionApp.controller('transactionDetailsController', ['$scope' , '$http' , '$lo
 		$scope.initShipping = function(data){
 			if(data.hasOwnProperty('shipping_address')){
 				$scope.shipping = true;
+				if(data.hasOwnProperty('transaction_tracking_id')){
+					$scope.trackingDone = true;
+				}
+				else{
+					$scope.trackingDone = false;
+				}
 			}
 			else{
 				$scope.shipping = false;
 			}
-			if(data.hasOwnProperty('transaction_tracking_id')){
-				$scope.trackingDone = true;
-			}
-			else{
-				$scope.trackingDone = false;
-			}
+			
 
 		};
 		$scope.paymentStatus = function(){
