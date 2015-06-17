@@ -16,6 +16,7 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 		$scope.districts = {};
 
 		$scope.submit = function(){
+			if($scope.editDetailsForm.$valid){
 				//get store details from model
 				$log.debug($window.sessionStorage.token);
 				$log.debug($scope.storeDetails);
@@ -46,7 +47,8 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 					$log.debug(data);
 					$scope.error = data.error;				
 				});
-			};
+			}
+		};
 
 		$scope.getProvinceList = function(){
 			$scope.storeDetails.merchant_address.city_id = '',

@@ -10,10 +10,10 @@
 	          <span class="form-label">Product Name</span>
 	          <div class="right-inner-addon">
 	            <input type="text" class="form-control" name="product_name" ng-model="productDetails.name" required>
-	            <div ng-show="addProductForm.$submitted || addProductForm.productname.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.productname.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.productname.$valid"></i>
-	              <span class="error-message" ng-show="addProductForm.productname.$error.required">Product Name is required.</span>
+	            <div ng-show="addProductForm.$submitted || addProductForm.product_name.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_name.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_name.$valid"></i>
+	              <span class="error-message" ng-show="addProductForm.product_name.$error.required">Product Name is required.</span>
 	            </div>
 	          </div>
 	        </div>
@@ -21,7 +21,7 @@
 	        <div class="form-group">
 	          <span class="form-label">Product Description</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="product" ng-model="productDetails.description" required>
+	            <input type="text" class="form-control" name="product_description" ng-model="productDetails.description" required>
 	            <div ng-show="addProductForm.$submitted || addProductForm.product_description.$touched">
 	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_description.$valid"></i>
 	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_description.$valid"></i>
