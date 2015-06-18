@@ -2,17 +2,18 @@
 	<form name="editProductForm" ng-submit="updateProduct()" novalidate>
 		
 		<div class="inner-content">
-			<a ui-sref="merchant.product" class="link-blue text-right"><i class="fa fa-arrow-left"></i> Cancel</a>			
-			<span class="subtitle"><strong>Edit Product</strong></span>
+			<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6 subtitle"><strong>Edit Product</strong></span>
+			<a ui-sref="merchant.product" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 link-blue text-right"><i class="fa fa-arrow-left"></i> Cancel</a>				
+			<br/><br/><br/>
 	    	
 			<div class="form-group">
 	          <span class="form-label">Product Name</span>
 	          <div class="right-inner-addon">
 	            <input type="text" class="form-control" name="product_name" ng-model="productDetails.name" required>
-	            <div ng-show="addProductForm.$submitted || addProductForm.productname.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.productname.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.productname.$valid"></i>
-	              <span class="error-message" ng-show="addProductForm.productname.$error.required">Product Name is required.</span>
+	            <div ng-show="editProductForm.$submitted || editProductForm.product_name.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editProductForm.product_name.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editProductForm.product_name.$valid"></i>
+	              <span class="error-message" ng-show="editProductForm.product_name.$error.required">Product Name is required.</span>
 	            </div>
 	          </div>
 	        </div>
@@ -20,11 +21,11 @@
 	        <div class="form-group">
 	          <span class="form-label">Product Description</span>
 	          <div class="right-inner-addon">
-	            <input type="text" class="form-control" name="product" ng-model="productDetails.description" required>
-	            <div ng-show="addProductForm.$submitted || addProductForm.product_description.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_description.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_description.$valid"></i>
-	              <span class="error-message" ng-show="addProductForm.product_description.$error.required">Product Description is required.</span>
+	            <input type="text" class="form-control" name="product_description" ng-model="productDetails.description" required>
+	            <div ng-show="editProductForm.$submitted || editProductForm.product_description.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editProductForm.product_description.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editProductForm.product_description.$valid"></i>
+	              <span class="error-message" ng-show="editProductForm.product_description.$error.required">Product Description is required.</span>
 	            </div>
 	          </div>
 	        </div>
@@ -33,12 +34,36 @@
 	          <span class="form-label">Price</span>
 	          <div class="right-inner-addon">
 	            <input type="text" class="form-control" name="product_price" ng-model="productDetails.price" required validation-type="integer">
-	            <div ng-show="addProductForm.$submitted || addProductForm.product_price.$touched">
-	              <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_price.$valid"></i>
-	              <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_price.$valid"></i>
-	              <span class="error-message" ng-show="addProductForm.product_price.$error.required">Price is required.</span>
-	              <span class="error-message" ng-show="addProductForm.product_price.$error.integer">Price must be number.</span>
+	            <div ng-show="editProductForm.$submitted || editProductForm.product_price.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editProductForm.product_price.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editProductForm.product_price.$valid"></i>
+	              <span class="error-message" ng-show="editProductForm.product_price.$error.required">Price is required.</span>
+	              <span class="error-message" ng-show="editProductForm.product_price.$error.integer">Price must be number.</span>
 	            </div>
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <span class="form-label">Quantity</span>
+	          <div class="right-inner-addon">
+	            <input type="text" class="form-control" name="product_quantity" ng-model="productDetails.quantity" required validation-type="integer">
+	            <div ng-show="editProductForm.$submitted || editProductForm.product_quantity.$touched">
+	              <i class="glyphicon glyphicon-ok" ng-show="editProductForm.product_quantity.$valid"></i>
+	              <i class="glyphicon glyphicon-remove" ng-show="!editProductForm.product_quantity.$valid"></i>
+	              <span class="error-message" ng-show="editProductForm.product_quantity.$error.required">Quantity is required.</span>
+	              <span class="error-message" ng-show="editProductForm.product_quantity.$error.integer">Price must be number.</span>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <span class="form-label">Limitless</span>
+	          <div class="right-inner-addon">
+	          	<select name="product_limitless" ng-model="productDetails.limitless">
+          			<option value="true">True</option>
+          			<option value="false">False</option>
+          		</select>
+          		<i class="glyphicon glyphicon-triangle-bottom border-left"></i>
 	          </div>
 	        </div>
 
@@ -65,7 +90,7 @@
 	        
 			<span class="subtitle"><strong>Shipping</strong></span>
 			<div class="center-block" style="margin-bottom: 10px">
-				<input type="checkbox" name="product_shipping" ng-model="enableShipping">
+				<input type="checkbox" name="product_shipping" ng-model="productDetails.need_address">
 				<span class="form_label">This product requires shipping</span>
 			</div>
 			<div class="form-group auto-overflow">
@@ -75,14 +100,14 @@
 				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
 		            <div class="right-inner-addon">
                       <div class="input-group">
-                        <input type="text" class="form-control" name="product_weight" maxlength="11" ng-model="productDetails.weight" ng-disabled="!enableShipping" validation-type="decimal" required>
+                        <input type="text" class="form-control" name="product_weight" maxlength="11" ng-model="productDetails.weight" ng-disabled="!productDetails.need_address" validation-type="decimal" required>
                       	<span class="input-group-addon" id="basic-addon1">gram</span>
                       </div>
-                      <div ng-show="form.$submitted || addProductForm.product_weight.$touched">
-                        <i class="glyphicon glyphicon-ok" ng-show="addProductForm.product_weight.$valid" style="right: 55px"></i>
-                        <i class="glyphicon glyphicon-remove" ng-show="!addProductForm.product_weight.$valid" style="right: 55px"></i>
-                        <span class="error-message" ng-show="addProductForm.product_weight.$error.required">Weight is required.</span>
-                        <span class="error-message" ng-show="addProductForm.product_weight.$error.decimal">Weight must be integer or decimal.</span>
+                      <div ng-show="form.$submitted || editProductForm.product_weight.$touched">
+                        <i class="glyphicon glyphicon-ok" ng-show="editProductForm.product_weight.$valid" style="right: 55px"></i>
+                        <i class="glyphicon glyphicon-remove" ng-show="!editProductForm.product_weight.$valid" style="right: 55px"></i>
+                        <span class="error-message" ng-show="editProductForm.product_weight.$error.required">Weight is required.</span>
+                        <span class="error-message" ng-show="editProductForm.product_weight.$error.decimal">Weight must be integer or decimal.</span>
                       </div>
                     </div>
 	          	</div>
@@ -94,7 +119,7 @@
 				</div>
 				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">				
 					<div class="right-inner-addon">
-		          		<select ng-model="productDetails.insurance" ng-disabled="!enableShipping">
+		          		<select ng-model="productDetails.insurance" ng-disabled="!productDetails.need_address">
 		          			<option>Optional</option>
 		          			<option>Yes</option>
 		          			<option>No</option>

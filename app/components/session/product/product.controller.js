@@ -4,10 +4,11 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 		description: '',
 		price: '',
 		image: '',
+		limitless: true,
 		weight: '0',
-		insurance: 'No'
+		insurance: 'No',
+		need_address: false
 	}	
-	$scope.enableShipping = false;
 	$scope.merchantProduct = {
 		merchant_id : '',
 		merchant_product: {}
@@ -106,9 +107,16 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 				headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
 			})
 		.success(function(data,status,headers,config){
-			if(!data.hasOwnProperty('merchant_id')){
+			if(data.hasOwnProperty('id')){
 				$scope.productDetails = data;
+				$log.debug($scope.productDetails);
 				$log.debug("Get product details success");
+				if(!$scope.productDetails.hasOwnProperty('weight')){
+					$scope.productDetails.weight = 0;
+				}
+				if(!$scope.productDetails.hasOwnProperty('insurance')){
+					$scope.productDetails.insurance = 'No';
+				}
 			}
 			else{
 				$scope.error = data.success;
@@ -137,28 +145,30 @@ phinisiApp.controller('productDetailsController', ['$scope' , '$http' , '$log' ,
 	};
 
 	$scope.updateProduct = function(){
-		$scope.productDetails.id = $scope.choosenProduct;
-		$log.debug($scope.productDetails);
-		$http.post(
-			//url
-			phinisiEndpoint + '/merchant/product/update',
-			$scope.productDetails,
-			{
-				headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,	
+		if ($scope.editProductForm.$valid){
+			$scope.productDetails.id = $scope.choosenProduct;
+			$log.debug($scope.productDetails);
+			$http.post(
+				//url
+				phinisiEndpoint + '/merchant/product/update',
+				$scope.productDetails,
+				{
+					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,	
+				})
+			.success(function(data,status,headers,config){
+				$log.debug(data);
+				if(data.hasOwnProperty('name')){
+					$log.debug("update product success");
+					$state.transitionTo('merchant.productDetails', {productId: $scope.choosenProduct});
+				}else{
+					$scope.error = data.description;
+				}				
 			})
-		.success(function(data,status,headers,config){
-			$log.debug(data);
-			if(data.hasOwnProperty('name')){
-				$log.debug("success update product");
-				$state.transitionTo('merchant.productDetails', {productId: $scope.choosenProduct});
-			}else{
-				$scope.error = data.description;
-			}				
-		})
-		.error(function(data,status,headers,config){
-			$log.debug(data);
-			$scope.error = data.error;			
-		});	
+			.error(function(data,status,headers,config){
+				$log.debug(data);
+				$scope.error = data.error;			
+			});	
+		}
 	};
 }]);
 
