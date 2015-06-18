@@ -1,15 +1,9 @@
 phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log', '$state',
 	function($scope, $http, $window, $log, $state){
+		$scope.haveStore = false;
 		$scope.storeDetails = {
-			merchant_details: {
-				merchant_name : '', 
-				merchant_logo_url : ''
-			}, 
-			merchant_address: {
-				city_id : '', 
-				address : '', 
-				phone_number : ''
-			}
+			merchant_details: {}, 
+			merchant_address: {}
 		}
 		$scope.provinces = {};
 		$scope.cities = {};
@@ -69,8 +63,8 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 			.error(function(data){
 				$scope.error = data.description;				
 			});
+		};
 
-		}
 		$scope.getCityList = function (selectedProvince){
 			$scope.storeDetails.merchant_address.district_id = '',
 			$http.get(
@@ -90,6 +84,7 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 				$scope.error = data.description;				
 			});
 		};
+
 		$scope.getDistrictList = function (selectedCity){
 			$http.get(
 				//url
@@ -109,4 +104,40 @@ phinisiApp.controller('detailsController', ['$scope', '$http', '$window', '$log'
 			});
 		};
 
+		$scope.getStoreDetails = function(){
+			$http.post(
+				//url
+				phinisiEndpoint + '/merchant/info',
+				//data
+				{},
+				//config
+				{
+					headers :{ 'Content-Type': 'application/json','Accept': 'application/json'}	,				
+				})
+			.success(function(data,status,headers,config){
+				if(data.hasOwnProperty('merchant_id')){
+					$scope.passingData(data);
+					$scope.haveStore = true;
+					$log.debug('Get store details  success!');	
+				}
+				else{
+					$scope.error = data.description;
+					$scope.haveStore = false;					
+				}
+				$log.debug(data);
+			})
+			.error(function(data,status,headers,config){
+				$log.debug(data);
+				$scope.error = data.error;				
+			});
+		};
+
+		$scope.passingData = function(data){
+			$scope.storeDetails.merchant_details.merchant_name = data.merchant_name;
+			$scope.storeDetails.merchant_details.merchant_logo_url = data.merchant_url;
+			$scope.storeDetails.merchant_address.city_id = data.merchant_city_id;
+			$scope.storeDetails.merchant_address.address = data.merchant_address;
+			$scope.storeDetails.merchant_address.phone_number = data.merchant_phone;
+			$scope.storeDetails.merchant_address.city = data.merchant_city;
+		}
 	}]);

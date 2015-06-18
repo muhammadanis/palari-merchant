@@ -1,4 +1,5 @@
 phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$window' , '$state', '$stateParams' , function($scope, $http, $log, $window, $state, $stateParams){
+	$scope.haveProduct = false;
 	$scope.productDetails = {
 		name: '',
 		description: '',
@@ -30,6 +31,12 @@ phinisiApp.controller('addProductController', ['$scope' , '$http' , '$log' , '$w
 				$scope.merchantProduct.merchant_id = data.merchant_id;
 				$scope.merchantProduct.merchant_product = data.merchant_product; 
 				$log.debug('Get product list success!');
+				if($scope.merchantProduct.merchant_product.length > 0){
+					$scope.haveProduct = true;
+				}
+				else{
+					$scope.haveProduct = false;	
+				}
 				$log.debug($scope.merchantProduct);
 			}	
 			else{
