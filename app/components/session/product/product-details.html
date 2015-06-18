@@ -15,7 +15,8 @@
 				<a ui-sref="merchant.editProduct({productId: '{{choosenProduct}}'})" class="link-blue pull-left"><center><i class="fa fa-edit"></i> Edit</center></a>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a class="link-blue" clip-copy="getURL()"><center><i class="fa fa-copy"></i> Copy Link</center></a>
+				<a class="link-blue" ng-click="urlToggle()"><center><i class="fa fa-copy"></i> Copy Link</center></a>
+				<input type="text" class="form-control" ng-model="productURL" ng-show="showURL">
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<a class="link-blue pull-right" ng-click="deleteToggle()"><center><i class="fa fa-trash"></i> Delete</center></a>		
@@ -23,7 +24,7 @@
 		</div>		
 		<div style="margin: 10px 0px;">
 			<div class="center-block text-center">
-				<span class="product-name-label"><strong> {{productDetails.name}}</strong></span>
+				<span class="product-name-label"><strong>{{productDetails.name}}</strong></span>
 			</div>				
 			<div class="center-block text-center">
 				<span class="product-price-label">{{productDetails.price | mycurrency}}</span>
@@ -35,14 +36,22 @@
 
 		<div class="product-details-wrapper">
 			<table class="product-details-table">
-				<tr class="product-details-row">
-					<td><i class="fa fa-briefcase"></i> Weight</td>
-					<td>{{ product.weight == '' ? 'n/a' : product.weight + 'gr' }}</td>
-				</tr>
-				<tr>
-					<td><i class="fa fa-truck"></i> Insurance</td>
-					<td>{{ product.insurance == '' ? 'n/a' : product.insurance + 'gr' }}</td>
-				</tr>
+				<tbody>
+					<tr class="product-details-row">
+						<td><i class="fa fa-list-alt"></i> Quantity</td>
+						<td>{{ productDetails.quantity}}</td>
+					</tr>
+				</tbody>
+				<tbody ng-show="productDetails.need_address">
+					<tr class="product-details-row">
+						<td><i class="fa fa-briefcase"></i> Weight</td>
+						<td>{{productDetails.weight}}</td>
+					</tr>
+					<tr>
+						<td><i class="fa fa-truck"></i> Insurance</td>
+						<td>{{productDetails.insurance}}</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>

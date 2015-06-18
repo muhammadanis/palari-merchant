@@ -1,5 +1,6 @@
 sessionApp.controller('transactionController', ['$scope' , '$http' , '$log' , '$window' , '$state' ,'$stateParams' , 
 	function($scope, $http, $log, $window, $state, $stateParams){
+		$scope.haveTransaction = false;
 		$scope.transactionType = '';
 		$scope.transactions = null;
 		$scope.getTransactionList = function(){
@@ -19,8 +20,14 @@ sessionApp.controller('transactionController', ['$scope' , '$http' , '$log' , '$
 				}	
 				else{
 					$scope.transactions = data;
-					$log.debug('Get transactions list success!');
 					$log.debug($scope.transactions);
+					if($scope.transactions.length > 0){
+						$scope.haveTransaction = true;
+					}
+					else{
+						$scope.haveTransaction = false;	
+					}
+					$log.debug('Get transactions list success!');
 				}
 			})
 			.error(function(data,status,headers,config){

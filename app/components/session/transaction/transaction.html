@@ -1,15 +1,15 @@
 <!-- Details Unset -->
-<!-- <div class="content">
-	<div class="row">
+<div class="content" ng-init="getTransactionList()" ng-show="!haveTransaction">
+	<div class="inner-content">
 		<span class="subtitle">Transaction List</span>
 	</div>
-	<div class="row">
+	<div class="inner-content">
 		<p class="text-label text-center">You haven't had any transactions yet.</p>
 	</div>
-</div> -->
+</div>
 
 <!-- Details Set -->
-<div class="content" ng-init="getTransactionList()">
+<div class="content" ng-show="haveTransaction">
 	<div class="inner-content vertical-align">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
 			<div class="left-inner-addon">
